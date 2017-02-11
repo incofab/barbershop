@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+        <span><i class="fa fa-user-plus"></i> Register</span>
+    </ion-title>  
+  </ion-navbar>
+</ion-header> 
+
+<div class="clear"></div>
+
+<ion-content padding class="signup-page">
+
+    <div >
+
+        <ion-list>
+            <ion-item>
+                <ion-label floating>First Name</ion-label>
+                <ion-input type="text" [(ngModel)]="firstname" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Last Name</ion-label>
+                <ion-input type="text" [(ngModel)]="lastname" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="email" [(ngModel)]="email" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text" [(ngModel)]="username" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" [(ngModel)]="password" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Confirm Password</ion-label>
+                <ion-input type="password" [(ngModel)]="cPassword" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Organisation</ion-label>
+                <ion-input type="text" [(ngModel)]="organisation" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <div><ion-label >Country</ion-label></div>
+                <ion-select [(ngModel)]="country">
+                    <ion-option *ngFor="let country of countries"
+                        value="{{ country }}">{{ country }}</ion-option>
+                </ion-select>
+            </ion-item>
+
+        </ion-list>
+
+        <br />
+        <button (click)="signup()">Sign Up</button>
+
+    </div>
+
+</ion-content>

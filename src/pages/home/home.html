@@ -1,0 +1,109 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      Ionic Blank
+    </ion-title>  
+  </ion-navbar>
+</ion-header> 
+  
+<ion-content padding class="home-content">
+
+ <button class="button-find" (click)="gotoSearch()">
+    <i class="fa fa-search fa-fw"></i>
+    Find your favourite barber shop
+  </button>
+
+  <ion-grid > 
+ 
+    <ion-row wrap  > 
+      <ion-col width-33 (click)="barberShop()" >
+        <div>
+          <span class="icon">
+            <i class="fa fa-building-o fa-fw"></i>
+          </span>
+          <p text-uppercase >Barber <br />Shop</p>
+        </div>
+      </ion-col>
+ 
+      <ion-col width-33 (click)="barberSchool()" >
+        <div>
+          <span class="icon" >
+            <ion-icon name="school"></ion-icon>
+          </span>
+          <p text-uppercase >Barber <br />School</p>
+        </div>
+      </ion-col>
+      
+      <ion-col width-33 (click)="nailcare()" >
+        <div>
+          <span class="icon" >
+            <i class="fa fa-hand-paper-o fa-fw"></i>
+          </span>
+          <p text-uppercase >Nail <br />care</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row wrap> 
+      <ion-col width-33 (click)="bookAppointment()">
+        <div>
+          <span class="icon">
+            <i class="fa fa-bookmark-o fa-fw"></i>
+          </span>
+          <p text-uppercase >Book Appointments</p>
+        </div>
+      </ion-col>
+      
+      <ion-col width-33 (click)="hireBaber()">
+        <div>
+          <span class="icon">
+            <i class="fa fa-money fa-fw"></i>
+          </span>
+          <p text-uppercase >Hire a <br />Barber</p>
+        </div>
+      </ion-col>
+      
+      <ion-col width-33>
+        <div>
+          <span class="icon">
+            <i class="fa fa-credit-card fa-fw"></i>
+          </span>
+          <p text-uppercase >Rent a <br />space</p>
+        </div>
+      </ion-col>
+    </ion-row>  
+    
+    <ion-row wrap > 
+      <ion-col width-33>
+        <div>
+          <span class="icon">
+            <i class="fa fa-exchange fa-fw"></i>
+          </span>
+          <p text-uppercase >Transfer of ownership</p>
+        </div>
+      </ion-col>
+      
+      <ion-col width-33>
+        <div> 
+          <span class="icon"> 
+            <i class="fa fa-calendar fa-fw"></i>
+          </span>
+          <p text-uppercase ><br />Events</p> 
+        </div>
+      </ion-col>
+       
+      <ion-col width-33 (click)="gotoForum()">
+        <div>
+          <span class="icon">
+            <i class="fa fa-forumbee fa-fw"></i>
+          </span>
+          <p text-uppercase >Community Forum</p>
+        </div>
+      </ion-col>
+    </ion-row> 
+
+  </ion-grid>
+
+  
+</ion-content>

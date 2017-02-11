@@ -1,0 +1,80 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      Barber Shops
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="barber-shool" >
+
+    <div *ngIf="!countrySelected">
+
+        <ion-card>
+            <img src="../../assets/img/barbershop_logo.jpg" alt="" >
+        </ion-card>
+
+        <div padding ></div>
+        
+        <ion-list> 
+            <ion-item >
+                <ion-label>Country</ion-label>
+                <ion-select [(ngModel)]="selectedCountryIndex" 
+                    (ionChange)="getState()" >
+                    <ion-option *ngFor="let country of countries, let i = index" 
+                        value="{{ i }}">{{ country }}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>State</ion-label> 
+                <ion-select [(ngModel)]="selectedStateIndex" >
+                    <ion-option value="-1">Select State</ion-option>
+                    <ion-option *ngFor="let state of states, let i = index"
+                    value="{{ i }}">{{ state }}</ion-option>
+                </ion-select>
+            </ion-item> 
+        </ion-list>
+
+        <br />
+        <button (click)="listShops()"
+            ><i class="fa fa-search"></i> &nbsp; search</button>
+
+    </div>
+
+    <div *ngIf="countrySelected">
+
+        <p><b>List of barber shops</b></p>
+
+        <ion-list>
+        
+        <ion-item *ngFor="let shop of shops, let i = index" >
+            
+            <ion-card>
+                <div text-center >
+                    <b>{{ shop.title }}</b><br /> 
+                    <small>{{ shop.name }}</small>
+                </div>
+                <p><small><i class="fa fa-map-marker"></i> {{ shop.address }}</small></p>            
+                <p><small><i class="fa fa-phone"></i> {{ shop.phone }}</small></p>            
+
+                <ion-grid > 
+                    <ion-row wrap > 
+                        <ion-col width-50 >
+                            <small><i class="fa fa-envelop"></i> {{ shop.email }}</small>
+                        </ion-col>
+                        <ion-col width-50 >
+                            <small><b>Rating: </b>*****</small>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+  
+            </ion-card>
+             
+        </ion-item>
+
+        </ion-list>
+
+    </div>
+
+</ion-content>

@@ -1,0 +1,76 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      {{ (activePost == RENT_A_BARBERSHOP_SPACE) ? 'Rent ' : 'Post ' }}
+      Barbershop space
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="post-rent-space" >
+
+    <ion-grid>
+        <ion-row>
+            <ion-col width-50 >
+                <button [ngClass]="{active: POST_A_BARBERSHOP_SPACE == activePost}" 
+                    (click)="chooseAction(POST_A_BARBERSHOP_SPACE)"><small>Post Barbershop space</small></button>                
+            </ion-col>
+            <ion-col width-50>
+                <button [ngClass]="{active: RENT_A_BARBERSHOP_SPACE == activePost}" 
+                    (click)="chooseAction(RENT_A_BARBERSHOP_SPACE)"><small>Rent Barbershop space</small></button>                
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div padding ></div>
+
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Space Title</ion-label>
+            <ion-input type="text" [(ngModel)]="spaceTitle" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Location</ion-label>
+            <ion-input type="text" [(ngModel)]="location" ></ion-input>
+        </ion-item>
+        <ion-item *ngIf="activePost == POST_A_BARBERSHOP_SPACE">
+            <ion-label floating>Amount</ion-label>
+            <ion-input type="text" [(ngModel)]="amount" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Image</ion-label>
+            <ion-input type="file" [(ngModel)]="image" ></ion-input>
+        </ion-item>
+        <ion-item *ngIf="activePost == RENT_A_BARBERSHOP_SPACE" >
+            <div><ion-label>Type</ion-label></div>
+            <ion-select [(ngModel)]="type">
+                <ion-option value="Hotel">Hotel</ion-option>
+                <ion-option value="Hall">Hall</ion-option>
+                <ion-option value="School">School</ion-option>
+                <ion-option value="Others">Others</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Size</ion-label>
+            <ion-input type="text" [(ngModel)]="size" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Phone</ion-label>
+            <ion-input type="text" [(ngModel)]="phone" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="email" ></ion-input>
+        </ion-item>
+        <ion-item *ngIf="activePost == RENT_A_BARBERSHOP_SPACE" >
+            <ion-label floating>Description</ion-label>
+            <ion-input type="text" [(ngModel)]="description" ></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <div padding ></div>
+
+    <button (click)="post_rent_space()">Send</button>
+
+</ion-content>

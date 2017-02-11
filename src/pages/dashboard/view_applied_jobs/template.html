@@ -1,0 +1,35 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      All Applied Jobs
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="view-applied-jobs" >
+
+    <ion-list>
+        <ion-item *ngFor="let job of jobs; let i = index">
+
+            <h2 text-center>{{ job.title }}</h2>
+            <p text-center>{{ job.applicant }}</p>
+
+            <p>{{ job.details }}</p>            
+
+            <ion-grid > 
+                <ion-row wrap > 
+                    <ion-col width-50 >
+                        <p><small><b>Experience: </b>{{ job.experience }}</small></p>
+                    </ion-col>
+                    <ion-col width-50 >
+                        <p><small><b>Date posted: </b>{{ job.date_posted }}</small></p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-item>
+    </ion-list>   
+
+
+</ion-content>

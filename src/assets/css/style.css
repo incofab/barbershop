@@ -1,0 +1,9 @@
+.back-button, .back-button-md{
+    max-width: 9%;
+}
+.clear{
+    clear: both;
+}
+.alert-radio-group{
+    color: #333333;
+}

@@ -1,0 +1,100 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      Post Job
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="post-a-job" >
+
+    <ion-grid>
+        <ion-row>
+            <ion-col width-33 >
+                <button [ngClass]="{active: POST_AS_A_BARBER == activeCategory}" 
+                    (click)="postJobAs(POST_AS_A_BARBER)"><small>Post job as a barber</small></button>                
+            </ion-col>
+            <ion-col width-33>
+                <button [ngClass]="{active: HIRE_A_BARBER == activeCategory}" 
+                    (click)="postJobAs(HIRE_A_BARBER)"><small>Hire a barber</small></button>                
+            </ion-col>
+            <ion-col width-33>
+                <button [ngClass]="{active: HIRE_A_MANICURIST == activeCategory}" 
+                    (click)="postJobAs(HIRE_A_MANICURIST)"><small>Post job as Manicurist</small></button>                
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div padding ></div>
+
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Job Title</ion-label>
+            <ion-input type="text" [(ngModel)]="jobTitle" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Company Name</ion-label>
+            <ion-input type="text" [(ngModel)]="companyName" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Location</ion-label>
+            <ion-input type="text" [(ngModel)]="location" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Job Description</ion-label>
+            <ion-input type="text" [(ngModel)]="jobDesc" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Specification</ion-label>
+            <ion-input type="text" [(ngModel)]="specification" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <div><ion-label>Job Type</ion-label></div>
+             <ion-select [(ngModel)]="jobType">
+                <ion-option value="">Full time</ion-option>
+                <ion-option value="">Part time</ion-option>
+                <ion-option value="">Contract</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <div><ion-label>Experience</ion-label></div>
+            <ion-input type="text" [(ngModel)]="experience" ></ion-input>
+             <ion-select [(ngModel)]="experience">
+                <ion-option value="">Entry Level</ion-option>
+                <ion-option value="">1-3 years</ion-option>
+                <ion-option value="">3-5 years</ion-option>
+                <ion-option value="">5+ Years</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <div><ion-label>Salary</ion-label></div>
+             <ion-select [(ngModel)]="salary">
+                <ion-option value="">By Percentage</ion-option>
+                <ion-option value="">By Salary</ion-option>
+                <ion-option value="">Others</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Deadline</ion-label>
+            <ion-input type="text" [(ngModel)]="deadLine" placeholder="YYYY-MM-DD" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contact Phone</ion-label>
+            <ion-input type="text" [(ngModel)]="phone" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contact Email</ion-label>
+            <ion-input type="email" [(ngModel)]="email" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contact Name</ion-label>
+            <ion-input type="text" [(ngModel)]="name" ></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <div padding ></div>
+
+    <button (click)="post_a_job()">Send</button>
+
+</ion-content>

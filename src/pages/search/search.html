@@ -1,0 +1,49 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      Search
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="Search" >
+
+    <div *ngIf="!showSearchResults" >
+
+        <ion-list>
+            <ion-item>
+                <ion-label floating>Barbershop name</ion-label>
+                <ion-input type="text" [(ngModel)]="shopName" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating >Select Country</ion-label>
+                <ion-select [(ngModel)]="selectedCountry" >
+                    <ion-option *ngFor="let country of countries, let i = index" 
+                        value="{{ country }}">{{ country }}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-checkbox id="near_me" color="dark" [(ngModel)]="nearMe" ></ion-checkbox>
+                <ion-label for="near_me">near me</ion-label>
+            </ion-item>
+        </ion-list>
+        <div padding ></div>
+        <button ion-button (click)="search()">
+            <i class="fa fa-search fa-fw"></i> &nbsp; Search</button>
+
+    </div>
+
+
+    <ion-list *ngIf="showSearchResults" >
+        <ion-item *ngFor="let shop of shops, let i = index" >
+            <ion-thumbnail item-left>
+                <img src="" alt="">
+            </ion-thumbnail>
+            <h2>{{ ahop.shop_name }}</h2>
+            <p>{{ phone.location }}</p>
+            <p>phone: {{ shop.phone }}</p>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

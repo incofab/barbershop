@@ -1,0 +1,59 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      Contact Us
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="contact-us" >
+    
+    <ion-card>
+        <ion-card-header>
+            Barber Shop Connnect Africa
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col width-50>
+                        <img src="../../assets/img/barbershop_logo.jpg" alt="" >
+                    </ion-col>
+                    <ion-col width-50>
+                        <p><b>Address: </b> Lorem ipsum dolor sit amet.</p>
+                        <p><b>Phone: </b> 08075156982</p>
+                        <p><b>Email: </b> info@barbershopconnectafrica.com</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+     <ion-list>
+        <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="firstname" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="lastname" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Your Email</ion-label>
+            <ion-input type="text" [(ngModel)]="email" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Subject</ion-label>
+            <ion-input type="text" [(ngModel)]="subject" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <div><ion-label>Purpose</ion-label></div>
+            <textarea cols="50" rows="4" [(ngModel)]="purpose" ></textarea>
+        </ion-item>
+    </ion-list>
+
+    <br />
+    <button (click)="send()">send</button>
+
+</ion-content>
