@@ -29,7 +29,7 @@ export class ViewAppliedJobsPage {
                 
         loading.present();
         
-        this.dService.viewPostedJobs()
+        this.dService.viewAppliedJobs()
             .subscribe(response => { // On success
             if(response.success){
                 this.jobs = response.result;
