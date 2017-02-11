@@ -52,14 +52,13 @@ export class BarberSchoolPage {
 
       this.genService.getBarberSchoolLists(
           this.countries[this.selectedCountryIndex],
-          this.states[this.selectedStateIndex]
+          this.states[this.selectedStateIndex], false
         ).subscribe(response => {
-          console.log(response);
+        //   console.log(response);
           loading.dismiss();
           if(response.success){
-              let schools = response;
               this.navCtrl.push(BarberSchoolListsPage, {
-                schools: schools,
+                schools: response.result,
             });
         }
         },
@@ -68,7 +67,33 @@ export class BarberSchoolPage {
             K.alert(this.alertCtrl, 'Network error', 'Data retrieval failed');
         });
 
+  }
+
+  viewAll(){
+
+      let loading = this.loadingCtrl.create({
+          content: 'Loading...',
+      });
+
+      loading.present();
+
+      this.genService.getBarberSchoolLists(
+          null, null, true).subscribe(response => {
+        //   console.log(response);
+          loading.dismiss();
+          if(response.success){
+              this.navCtrl.push(BarberSchoolListsPage, {
+                schools: response.result[0],
+                schools_no_payment: response.result[1],
+            });
+        }
+        },
+        (err: any) => { // on error
+            loading.dismiss();
+            K.alert(this.alertCtrl, 'Network error', 'Data retrieval failed');
+        });
 
   }
+
 
 }

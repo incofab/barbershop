@@ -47,7 +47,6 @@ export class SignupPage {
          
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
-            dismissOnPageChange: true
         });
                 
         loading.present();
@@ -63,14 +62,15 @@ export class SignupPage {
         }
         this.dService.signup(signupData)
             .subscribe(response => { // On success
-            // Show alert message 
+            if(response.success){
+                K.alert(this.alertCtrl, 'Success', response.message);
+            }else {
+                K.alert(this.alertCtrl,'Error!', 'Registration Failed');
+            }
             loading.dismiss();
         },
         (err: any) => { // on error
             K.alert(this.alertCtrl, 'Registration Failed', 'Network error');
-            loading.dismiss();
-        },
-        ()=>{   // On completion
             loading.dismiss();
         });
 

@@ -19,6 +19,8 @@ export class AppointmentPage {
     date:string = '';
     arrivalTime:string = '';
     purpose:string = '';
+    listngs:any;
+    isListings:boolean = true;
 
   constructor(public navCtrl: NavController, private navParams: NavParams,
     private alertCtrl: AlertController, private genService:GeneralService,
@@ -27,34 +29,60 @@ export class AppointmentPage {
   }
 
   ngOnInit(){
-      
+      this.getListings();
+  }
+
+  getListings(){
+        
+    let loading = this.loadingCtrl.create({
+        content: 'Loading...',
+    });
+
+    loading.present();
+    
+    let ret = this.genService.listingsForAppointment()
+    .subscribe(response => {
+        this.listngs = response.result;
+        loading.dismiss();
+    },
+    (err: any) => { // on error
+        loading.dismiss();
+        K.alert(this.alertCtrl, 'Network error', 'Data retrieval failed');
+    });
+
   }
 
   send(){
         
     let loading = this.loadingCtrl.create({
         content: 'Loading...',
-        dismissOnPageChange: true
     });
 
     loading.present();
     
     let ret = this.genService.bookAppointment(
         this.sendTo, this.email, this.phone, this.date, 
-        this.arrivalTime, this.purpose
-    );
-    
-    if(ret._isScalar == false){
-        loading.dismiss();
-         K.alert(this.alertCtrl, 'Error:', 'Could not connect to server');
-        return;
-    }
+        this.arrivalTime, this.purpose)
+        .subscribe(response => {
+        if(response.success)
+            K.alert(this.alertCtrl, 'Success:', 'Your Message has been sent successfully');
+        else K.alert(this.alertCtrl, 'Failed:', response.message);
 
-    ret.subscribe(response => {
         loading.dismiss();
-        K.alert(this.alertCtrl, 'Success:', 'Your Message has been sent successfully');
+    },
+    (err: any) => { // on error
+        loading.dismiss();
+        K.alert(this.alertCtrl, 'Network error', 'Data sending failed');
     });
 
+  }
+
+  bookAppointment(index:number){
+      this.isListings = false;
+      this.sendTo = this.listngs[index].email;
+  }
+  backToListings(){
+      this.isListings = true;
   }
 
 }

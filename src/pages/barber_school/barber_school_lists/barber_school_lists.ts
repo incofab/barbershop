@@ -9,12 +9,14 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 export class BarberSchoolListsPage {
 
     schools: any;
+    schoolsNoPayment: any;
     constructor(public navCtrl: NavController, private navParams: NavParams,
-        private alertCtrl: AlertController, private genService:GeneralService) {
+        private alertCtrl: AlertController) {
     }
 
     ngOnInit(){
         this.schools = this.navParams.get('schools');
+        this.schoolsNoPayment = this.navParams.get('schools_no_payment') || [];
     }
 
     openDetails(index: number){

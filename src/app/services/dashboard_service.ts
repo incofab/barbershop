@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import {SERVER_URL} from './config';
 import { Http, Headers } from '@angular/http';
 import {Observable} from 'rxjs';
@@ -8,14 +9,14 @@ import { K } from '../../app/k/k';
 @Injectable()
 export class DashboardService {
 
-    constructor(private http: Http){
+    constructor(private http: Http, private storage:Storage){
 
     }
     /**
      * Helper function to concatenate the token key and values together
      */
     private token(): string{
-        return K.TOKEN + '=' + K.getCredentials();
+        return K.TOKEN + '=' + K.getCredentials(this.storage);
     }
 
    login(username:string, password:string){
@@ -24,7 +25,7 @@ export class DashboardService {
             
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let body = new FormData();
-        body.append('username', username);
+        body.append('email', username);
         body.append('password', password);
 
         return this.http.post(url, body).map(res => res.json());

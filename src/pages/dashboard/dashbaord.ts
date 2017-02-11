@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController} from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { DashboardService } from '../../app/services/dashboard_service';
 import { K } from '../../app/k/k';
 import { SignupPage } from './signup/signup';
@@ -18,48 +19,57 @@ import { ViewPostedJobsPage } from './view_posted_jobs/page';
 export class DashboardPage {
 
     isLoggedIn:boolean = false;
-    loginUsername: string = '';
+    loginEmail: string = '';
     loginPassword: string = '';
+    userDetails: UserDetails;
 
     constructor(public navCtrl: NavController,
         private alertCtrl: AlertController, private dService:DashboardService,
-        private loadingCtrl: LoadingController) {
+        private loadingCtrl: LoadingController, private storage: Storage) {
 
     }
 
     ngOnInit(){
-       
+       this.checkLogin();
     }
 
     login(){
-        console.log('username = ' + this.loginUsername 
-        + ', password = ' + this.loginPassword);
-        this.isLoggedIn = true;
-        
+        // console.log('username = ' + this.loginUsername 
+        //     + ', password = ' + this.loginPassword);
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
-            dismissOnPageChange: true
         });
                 
         loading.present();
         
-        this.dService.login(this.loginUsername, this.loginPassword)
+        this.dService.login(this.loginEmail, this.loginPassword)
             .subscribe(response => { // On success
-            // this.checkLogin(response.json());
+            if(response.success){
+                this.storage.set(K.TOKEN, response.token);
+                this.userDetails = response.user_details;
+                this.storage.set('user_details', JSON.stringify(this.userDetails));
+                this.isLoggedIn = true;
+            }else{
+                K.alert(this.alertCtrl, 'Login Failed', 'Incorrect username and password');
+            }
             loading.dismiss();
         },
         (err: any) => { // on error
             K.alert(this.alertCtrl, 'Login Failed', 'Network error');
             loading.dismiss();
-        },
-        ()=>{   // On completion
-            loading.dismiss();
         });
 
     }
 
-    checkLogin():boolean{
-        return this.isLoggedIn;
+    checkLogin():void{
+        this.storage.get('user_details').then(
+            (val) => {
+                if(val) {
+                    this.isLoggedIn = true;
+                    this.userDetails = JSON.parse(val);
+                }
+            }
+        );            
     }
 
     gotoSignUpPage(){
@@ -82,7 +92,32 @@ export class DashboardPage {
     }
 
     logout(){
-        // this.navCtrl.push(ServicesProductsPage);
+        this.alertCtrl.create({
+        title: 'Logout',
+        message: 'Are you sure?',
+        buttons: [
+            {
+            text: 'No',
+            handler: () => {}
+            },
+            {
+            text: 'Yes',
+            handler: () => {
+                this.storage.remove(K.TOKEN);
+                this.storage.remove('user_details');
+                this.isLoggedIn = false;
+            }
+            }
+        ]}).present();
     }
 
+}
+
+interface UserDetails{
+    name: string;
+    username: string; // Username here is the email
+    userid: string;
+    organization:string;
+    state: string;
+    country: string;
 }

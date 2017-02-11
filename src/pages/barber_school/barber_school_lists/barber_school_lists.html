@@ -31,6 +31,26 @@
                 </ion-row>
              </ion-grid>
         </ion-item>
+        
+        <ion-item *ngFor="let school of schoolsNoPayment, let i = index" 
+            (click)="openDetails(i)">
+            <div text-center >
+                <b>{{ school.title }}</b><br /> 
+                <small>{{ school.location }}</small>
+            </div>            
+             
+             <ion-grid > 
+                <ion-row wrap > 
+                    <ion-col width-50 >
+                        <small><i class="fa fa-map-marker"></i> &nbsp; &nbsp;
+                        {{ school.location }}</small>
+                    </ion-col>
+                    <ion-col width-50 >
+                        <small><b>Experience: </b>{{ school.experience }}</small>
+                    </ion-col>
+                </ion-row>
+             </ion-grid>
+        </ion-item>
 
     </ion-list>
 

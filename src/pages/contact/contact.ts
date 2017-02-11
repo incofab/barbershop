@@ -33,24 +33,21 @@ export class ContactUsPage {
         
     let loading = this.loadingCtrl.create({
         content: 'Loading...',
-        dismissOnPageChange: true
     });
 
     loading.present();
     
     let ret = this.genService.contactUs(this.firstname, 
-        this.lastname, this.email, this.subject, this.message
-    );
-    
-    if(ret._isScalar == false){
+        this.lastname, this.email, this.subject, this.message)
+        .subscribe(response => {
+        if(response.success)
+            K.alert(this.alertCtrl, 'Success:', 'Your Message has been sent successfully');
+        else K.alert(this.alertCtrl, 'Failed:', response.message);
         loading.dismiss();
-         K.alert(this.alertCtrl, 'Error:', 'Could not connect to server');
-        return;
-    }
-
-    ret.subscribe(response => {
+    },
+    (err: any) => { // on error
         loading.dismiss();
-        K.alert(this.alertCtrl, 'Success:', 'Your Message has been sent successfully');
+        K.alert(this.alertCtrl, 'Network error', 'Message sending failed');
     });
 
   }

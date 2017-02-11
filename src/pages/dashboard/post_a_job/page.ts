@@ -47,7 +47,6 @@ export class PostAJobPage {
     
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
-            dismissOnPageChange: true
         });
                 
         loading.present();
@@ -68,14 +67,15 @@ export class PostAJobPage {
         };
         this.dService.post_a_job(postData)
             .subscribe(response => { // On success
-            K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
+            if(response.success){
+                K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
+            }else{
+                K.alert(this.alertCtrl, 'Success', response.message);
+            }
             loading.dismiss();
         },
         (err: any) => { // on error
             K.alert(this.alertCtrl, 'Failed', 'Sending failed');
-            loading.dismiss();
-        },
-        ()=>{   // On completion
             loading.dismiss();
         });
 

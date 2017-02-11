@@ -32,24 +32,24 @@ export class ServicesProductsPage {
 
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
-            dismissOnPageChange: true
         });
                 
         loading.present();
         
         this.dService.retrieveListings()
             .subscribe(response => { // On success
-            let result = response.json().result;
-            this.listingIDArr = result.load_listings;
-            this.servicesAndProductsArr = result.services_and_products;
+            if(response.success){
+                let result = response.result;
+                this.listingIDArr = result.load_listings;
+                this.servicesAndProductsArr = result.services_and_products;
+            }else{
+                K.alert(this.alertCtrl, 'Failed', 'Date retrieval failed');
+            }
             loading.dismiss();
         },
         (err: any) => { // on error
             K.alert(this.alertCtrl, 'Failed', 'Network Error, Listinsgs '
             + 'could not be fetched. Try again');
-            loading.dismiss();
-        },
-        ()=>{   // On completion
             loading.dismiss();
         });
 
@@ -59,7 +59,6 @@ export class ServicesProductsPage {
 
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
-            dismissOnPageChange: true
         });
                 
         loading.present();
@@ -67,14 +66,15 @@ export class ServicesProductsPage {
         this.dService.registerProductsAndServices(this.listingID,
              this.servicesAndProducts, this.price)
             .subscribe(response => { // On success
-            K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
+            if(response.success){
+                K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
+            }else{
+                K.alert(this.alertCtrl, 'Failed', response.message);
+            }
             loading.dismiss();
         },
         (err: any) => { // on error
             K.alert(this.alertCtrl, 'Failed', 'Sending failed');
-            loading.dismiss();
-        },
-        ()=>{   // On completion
             loading.dismiss();
         });
 

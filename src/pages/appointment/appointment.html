@@ -2,37 +2,78 @@
 <ion-header>
   <ion-navbar color="primary" >
     <ion-title>
-      Book Appointment
+        <div>
+            Book Appointment
+        </div>
+      <div>
+        <button *ngIf="!isListings" 
+            style="width: 30px; float: right; margin-right: 5px;"  (click)="backToListings()">Back</button>
+        <div class="clear"></div>
+      </div>
     </ion-title>  
   </ion-navbar>
 </ion-header>
   
 <ion-content padding class="barber-shool" >
 
-     <ion-list>
-        <ion-item>
-            <ion-label floating>To</ion-label>
-            <ion-input type="text" [(ngModel)]="sendTo" ></ion-input>
+    <ion-list class="listing" *ngIf="isListings">
+        
+        <ion-item *ngFor="let shop of listngs, let i = index" >
+            
+            <ion-card>
+                <div text-center >
+                    <b>{{ shop.title }}</b><br /> 
+                    <small>{{ shop.name }}</small>
+                </div>
+
+                <ion-grid > 
+                    <ion-row wrap > 
+                        <ion-col width-50 >
+                            <p><small><i class="fa fa-map-marker"></i> {{ shop.address }}</small></p>            
+                            <p><small><i class="fa fa-phone"></i> {{ shop.phone }}</small></p>            
+                            <small><i class="fa fa-envelop"></i> {{ shop.email }}</small>
+                        </ion-col>
+                        <ion-col width-50 >
+                            <small><b>Rating: </b>*****</small>
+                            <button ion-button (click)="bookAppointment(i)">Book Appointment</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+  
+            </ion-card>
+             
         </ion-item>
-        <ion-item>
-            <ion-label floating>Your Email</ion-label>
-            <ion-input type="text" [(ngModel)]="email" ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Your phone no</ion-label>
-            <ion-input type="text" [(ngModel)]="phone" ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Date</ion-label>
-            <ion-input type="date" [(ngModel)]="date" ></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Arrival Time</ion-label>
-            <ion-input type="time" [(ngModel)]="arrivalTime" ></ion-input>
-        </ion-item>
+
     </ion-list>
 
-    <br />
-    <button (click)="send()">send</button>
+    <div *ngIf="!isListings">
+        <ion-list >
+            <ion-item>
+                <ion-label floating>To</ion-label>
+                <ion-input type="text" [(ngModel)]="sendTo" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Your Email</ion-label>
+                <ion-input type="text" [(ngModel)]="email" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Your phone no</ion-label>
+                <ion-input type="text" [(ngModel)]="phone" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Date</ion-label>
+                <ion-input type="date" [(ngModel)]="date" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Arrival Time</ion-label>
+                <ion-input type="time" [(ngModel)]="arrivalTime" ></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <br />
+        
+        <button (click)="send()">send</button>
+
+    </div>
 
 </ion-content>

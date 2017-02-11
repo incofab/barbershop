@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import {SERVER_URL} from './config';
 import { Http, Headers } from '@angular/http';
 import {Observable} from 'rxjs';
@@ -10,22 +11,24 @@ export class GeneralService {
 
     // private barberSchoolLists: any;
     // private barberShopsLists: any = null;
-    constructor(private http: Http){
+    constructor(private http: Http, private storage:Storage){
 
     }
 
-   getBarberSchoolLists(country:string, state:string){
+   getBarberSchoolLists(country:string, state:string, viewAll:boolean){
        
-       let url: string = K.getBaseURL() + 'general_api.php?r=barber_school_list'
-            + `&country=${country}&state=${state}`;
-            
+       let url: string = K.getBaseURL() + 'general_api.php?r=barber_school_list';
+
+       if(!viewAll) url += `&country=${country}&state=${state}`;
+       
        return this.http.get(url).map(res => res.json());
    }
 
-   getBarberShopsLists(country:string, state:string){
+   getBarberShopsLists(country:string, state:string, viewAll:boolean){
 
-       let url: string = K.getBaseURL() + 'general_api.php?r=barber_shop_list'
-            + `&country=${country}&state=${state}`;;
+       let url: string = K.getBaseURL() + 'general_api.php?r=barber_shop_list';
+
+       if(!viewAll) url += `&country=${country}&state=${state}`;
             
        return this.http.get(url).map(res => res.json());
    }
@@ -37,11 +40,18 @@ export class GeneralService {
         return this.http.get(url).map(res => res.json());
     }
 
+    loadAllVacancies(){
+
+        let url: string = K.getBaseURL() + 'general_api.php?r=all_vacancies';
+            
+        return this.http.get(url).map(res => res.json());
+    }
+
     // Need to login before u can apply
     applyAsBarber(values:any){
         
        let url: string = K.getBaseURL() + 'general_api.php?r=apply_job&'
-            + K.TOKEN + '=' + K.getCredentials();
+            + K.TOKEN + '=' + K.getCredentials(this.storage);
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let body = new FormData();
@@ -71,10 +81,15 @@ export class GeneralService {
         return this.http.get(url).map(res => res.json());
     }
     
+    listingsForAppointment(){
+        let url: string = K.getBaseURL() + 'general_api.php?r=appointment';
+        return this.http.get(url).map(res => res.json());
+    }
+
     bookAppointment(sendTo: string, email:string, phone:string,
         date:string, arrivalTime:string, purpose:string){
 
-        let url: string = K.getBaseURL() + 'general_api.php?r=book_appointment';
+        let url: string = K.getBaseURL() + 'general_api.php?r=appointment';
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let body = new FormData();
@@ -84,6 +99,7 @@ export class GeneralService {
         body.append('date', date);
         body.append('arrival_time', arrivalTime);
         body.append('purpose', purpose);
+        body.append('book_appointment', true);
 
         return this.http.post(url, body,headers).map(res => res.json());
 

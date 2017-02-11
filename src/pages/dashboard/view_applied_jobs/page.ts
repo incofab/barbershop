@@ -25,21 +25,21 @@ export class ViewAppliedJobsPage {
     
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
-            dismissOnPageChange: true
         });
                 
         loading.present();
         
         this.dService.viewPostedJobs()
             .subscribe(response => { // On success
-            this.jobs = response.json();
+            if(response.success){
+                this.jobs = response.result;
+            }else {
+                K.alert(this.alertCtrl, 'Registration Failed', response.message);
+            }
             loading.dismiss();
         },
         (err: any) => { // on error
             K.alert(this.alertCtrl, 'Failed', 'Sending failed');
-            loading.dismiss();
-        },
-        ()=>{   // On completion
             loading.dismiss();
         });
 

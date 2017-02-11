@@ -18,17 +18,16 @@ export class ApplyModal {
     constructor(public navCtrl: NavController, private params: NavParams,
          private genService:GeneralService, private loadingCtrl: LoadingController,
          private alertCtrl: AlertController) {
-        this.detail = params.get('detail');
+        this.detail = params.get('detail') || {};
     }
 
     apply(){
         // post users application details
-        console.log('experience = ' + this.experience 
-            + ',  application message = ' + this.applicationMsg);
+        // console.log('experience = ' + this.experience 
+        //     + ',  application message = ' + this.applicationMsg);
        
        let loading = this.loadingCtrl.create({
            content: 'Loading...',
-           dismissOnPageChange: true
        });
 
         loading.present();
@@ -40,17 +39,16 @@ export class ApplyModal {
             poster_user_id : this.detail.poster_user_id, 
         };
 
-        let ret = this.genService.applyAsBarber(postData);
-        
-        if(ret._isScalar == false){
+        let ret = this.genService.applyAsBarber(postData)
+        .subscribe(response => {
+            if(response.success)
+                K.alert(this.alertCtrl, 'Sent!:', 'Application has been sent successfully');
+            else K.alert(this.alertCtrl, 'Error!:', response.message);
+           loading.dismiss();
+        },
+        (err: any) => { // on error
             loading.dismiss();
-            K.alert(this.alertCtrl, 'Error:', 'Application not sent');
-            return;
-        }
-
-        ret.subscribe(response => {
-            loading.dismiss();
-            K.alert(this.alertCtrl, 'Sent!:', 'Application has been sent successfully');
+            K.alert(this.alertCtrl, 'Network error', 'Message sending failed');
         });
 
     }

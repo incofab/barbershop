@@ -19,7 +19,9 @@ export class BarberShopsPage {
     selectedCountryIndex:number = -1;
     selectedStateIndex:number = -1;
     countrySelected:boolean = false;
+
     shops:any;
+    shopsNoPayment:any;
     
     k_country:Countries = null;
 
@@ -54,7 +56,7 @@ export class BarberShopsPage {
     
      this.genService.getBarberShopsLists(
          this.countries[this.selectedCountryIndex], 
-         this.states[this.selectedStateIndex]).subscribe(response => {
+         this.states[this.selectedStateIndex], false).subscribe(response => {
             console.log(response);
             if(response.success){
                 this.countrySelected = true;
@@ -69,6 +71,30 @@ export class BarberShopsPage {
 
   }
 
+    viewAll(){
+    
+        let loading = this.loadingCtrl.create({
+            content: 'Loading...',
+        });
+
+        loading.present();
+        
+        this.genService.getBarberShopsLists(null, null, true)
+        .subscribe(response => {
+            console.log(response);
+            if(response.success){
+                this.countrySelected = true;
+                this.shops = response.result[0];
+                this.shopsNoPayment = response.result[1];
+            }
+            loading.dismiss();
+        },
+        (err: any) => { // on error
+            loading.dismiss();
+            K.alert(this.alertCtrl, 'Network error', 'Data retrieval failed');
+        });
+
+    }
 
 //   dummyshops(){
 //       let shops = [];

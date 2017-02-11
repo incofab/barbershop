@@ -17,6 +17,15 @@
 
         <div padding ></div>
         
+        <div>
+            <fieldset>
+                <legend>View All Barber Shops</legend>
+
+                <button ion-button padding (click)="viewAll()">View all</button>
+
+            </fieldset>
+        </div>
+        
         <ion-list> 
             <ion-item >
                 <ion-label>Country</ion-label>
@@ -49,6 +58,31 @@
         <ion-list>
         
         <ion-item *ngFor="let shop of shops, let i = index" >
+            
+            <ion-card>
+                <div text-center >
+                    <b>{{ shop.title }}</b><br /> 
+                    <small>{{ shop.name }}</small>
+                </div>
+                <p><small><i class="fa fa-map-marker"></i> {{ shop.address }}</small></p>            
+                <p><small><i class="fa fa-phone"></i> {{ shop.phone }}</small></p>            
+
+                <ion-grid > 
+                    <ion-row wrap > 
+                        <ion-col width-50 >
+                            <small><i class="fa fa-envelop"></i> {{ shop.email }}</small>
+                        </ion-col>
+                        <ion-col width-50 >
+                            <small><b>Rating: </b>*****</small>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+  
+            </ion-card>
+             
+        </ion-item>
+
+        <ion-item *ngFor="let shop of shopsNoPayment, let i = index" >
             
             <ion-card>
                 <div text-center >

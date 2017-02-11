@@ -1,4 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -14,6 +15,7 @@ import { NailCarePage } from '../pages/nailcare/nailcare';
 import { SearchBarberShopPage } from '../pages/search/search';
 import { AppointmentPage } from '../pages/appointment/appointment';
 import { BarberSchoolListsPage } from '../pages/barber_school/barber_school_lists/barber_school_lists';
+import { ForumPage } from '../pages/forum/forum';
 
 import { PostAJobPage } from '../pages/dashboard/post_a_job/page';
 import { PostRentSpacePage } from '../pages/dashboard/post_a_space/page';
@@ -35,6 +37,7 @@ import { ViewPostedJobsPage } from '../pages/dashboard/view_posted_jobs/page';
     BarberSchoolPage,
     BarberShopsPage,
     NailCarePage,
+    ForumPage,
     SearchBarberShopPage,
     AppointmentPage,
     BarberSchoolListsPage,
@@ -61,6 +64,7 @@ import { ViewPostedJobsPage } from '../pages/dashboard/view_posted_jobs/page';
     BarberSchoolPage,
     BarberShopsPage,
     NailCarePage,
+    ForumPage,
     SearchBarberShopPage,
     AppointmentPage,
     BarberSchoolListsPage,
@@ -71,6 +75,7 @@ import { ViewPostedJobsPage } from '../pages/dashboard/view_posted_jobs/page';
     ViewAppliedJobsPage,
     ViewPostedJobsPage,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+      Storage]
 })
 export class AppModule {}

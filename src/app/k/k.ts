@@ -1,5 +1,5 @@
 import { AlertController } from 'ionic-angular';
-import { storage } from 'ionic/storage';
+import { Storage } from '@ionic/storage';
 
 export class K {
 
@@ -29,34 +29,36 @@ export class K {
         return 'http://localhost/barbershop/app/api/';
         // return 'http://www.barbershopconnectafrica.com/app/api/';
     }
+
     private static credentials:string = null;
-    static getCredentials(): string{
+
+    static getCredentials(storage: Storage): string{
         
         if(K.credentials != null) return K.credentials;
         
-        let storage: Storage = new Storage();
-        K.credentials = storage.getItem(K.TOKEN);
-        // window.localStorage.getItem('');
-        return K.credentials;
+        storage.get(K.TOKEN).then( (val) => {
+            K.credentials = val;
+            return K.credentials;
+        });
+        
     }
     
-    static setCredentials(value:string){
-        let storage: Storage = new Storage();
-        storage.setItem(K.TOKEN, value);
+    static setCredentials(storage: Storage, value:string){
+        storage.set(K.TOKEN, value);
         K.credentials = value;
     }
 
-    static isUserLoggedIn(): boolean{
+    static isUserLoggedIn(storage: Storage): boolean{
 
         if(K.credentials != null) return true;
         
-        let storage: Storage = new Storage();
-        K.credentials = storage.getItem(K.TOKEN);
-        if(K.credentials == null || K.credentials == '' || K.credentials == 'undefined'){
-            return false;
-        }
+        storage.get(K.TOKEN)
+            .then( (val) => {
+                K.credentials = val;        
+                if(!K.credentials) return false;
+                return true;
+            });
 
-        return true;
     }
 
 }
