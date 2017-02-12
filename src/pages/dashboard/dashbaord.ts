@@ -45,10 +45,10 @@ export class DashboardPage {
         this.dService.login(this.loginEmail, this.loginPassword)
             .subscribe(response => { // On success
             if(response.success){
-                this.storage.set(K.TOKEN, response.token);
+                K.setCredentials(this.storage, response.token);
                 this.userDetails = response.user_details;
-                this.storage.set('user_details', JSON.stringify(this.userDetails));
-                this.isLoggedIn = true;
+                this.storage.set('user_details', JSON.stringify(this.userDetails))
+                    .then(() => this.isLoggedIn = true );                
             }else{
                 K.alert(this.alertCtrl, 'Login Failed', 'Incorrect username and password');
             }
@@ -62,6 +62,8 @@ export class DashboardPage {
     }
 
     checkLogin():void{
+        // This loads the token into memory, to be used when needed
+        K.getCredentials(this.storage);
         this.storage.get('user_details').then(
             (val) => {
                 if(val) {

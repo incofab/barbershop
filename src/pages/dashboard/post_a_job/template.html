@@ -50,29 +50,28 @@
             <ion-input type="text" [(ngModel)]="specification" ></ion-input>
         </ion-item>
         <ion-item>
-            <div><ion-label>Job Type</ion-label></div>
+            <ion-label>Job Type</ion-label>
              <ion-select [(ngModel)]="jobType">
-                <ion-option value="">Full time</ion-option>
-                <ion-option value="">Part time</ion-option>
-                <ion-option value="">Contract</ion-option>
+                <ion-option value="Full time">Full time</ion-option>
+                <ion-option value="Part time">Part time</ion-option>
+                <ion-option value="Contract">Contract</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
-            <div><ion-label>Experience</ion-label></div>
-            <ion-input type="text" [(ngModel)]="experience" ></ion-input>
+            <ion-label>Experience</ion-label>
              <ion-select [(ngModel)]="experience">
-                <ion-option value="">Entry Level</ion-option>
-                <ion-option value="">1-3 years</ion-option>
-                <ion-option value="">3-5 years</ion-option>
-                <ion-option value="">5+ Years</ion-option>
+                <ion-option value="Entry Level">Entry Level</ion-option>
+                <ion-option value="1-3 years">1-3 years</ion-option>
+                <ion-option value="3-5 years">3-5 years</ion-option>
+                <ion-option value="5+ Years">5+ Years</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
-            <div><ion-label>Salary</ion-label></div>
+            <ion-label>Salary</ion-label>
              <ion-select [(ngModel)]="salary">
-                <ion-option value="">By Percentage</ion-option>
-                <ion-option value="">By Salary</ion-option>
-                <ion-option value="">Others</ion-option>
+                <ion-option value="By Percentage">By Percentage</ion-option>
+                <ion-option value="By Salary">By Salary</ion-option>
+                <ion-option value="Others">Others</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>

@@ -69,6 +69,7 @@ export class PostAJobPage {
             .subscribe(response => { // On success
             if(response.success){
                 K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
+                this.clearFields();
             }else{
                 K.alert(this.alertCtrl, 'Success', response.message);
             }
@@ -79,6 +80,20 @@ export class PostAJobPage {
             loading.dismiss();
         });
 
+  }
+
+  clearFields(){
+      this.jobTitle = '';
+      this.companyName = '';
+      this.location = '';
+      this.jobDesc = '';
+      this.specification = '';
+      this.jobType = '';
+      this.experience = '';
+      this.salary = '';
+      this.deadLine = '';
+      this.email = '';
+      this.name = '';
   }
 
 

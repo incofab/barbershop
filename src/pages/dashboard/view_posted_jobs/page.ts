@@ -34,7 +34,7 @@ export class ViewPostedJobsPage {
             if(response.success){
                 this.jobs = response.result;
             }else {
-                K.alert(this.alertCtrl, 'Registration Failed', response.message);
+                K.alert(this.alertCtrl, 'Failed', response.message);
             }
             loading.dismiss();
         },

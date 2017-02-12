@@ -64,6 +64,7 @@ export class SignupPage {
             .subscribe(response => { // On success
             if(response.success){
                 K.alert(this.alertCtrl, 'Success', response.message);
+                this.clearFields();
             }else {
                 K.alert(this.alertCtrl,'Error!', 'Registration Failed');
             }
@@ -76,5 +77,14 @@ export class SignupPage {
 
     }
     
+    clearFields(){
+        this.firstname = '';
+        this.lastname = '';
+        this.email = '';
+        this.username = '';
+        this.password = '';
+        this.cPassword = '';
+        this.organisation = '';
+    }
 
 }

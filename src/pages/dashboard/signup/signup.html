@@ -42,7 +42,7 @@
                 <ion-input type="text" [(ngModel)]="organisation" ></ion-input>
             </ion-item>
             <ion-item>
-                <div><ion-label >Country</ion-label></div>
+                <ion-label >Country</ion-label>
                 <ion-select [(ngModel)]="country">
                     <ion-option *ngFor="let country of countries"
                         value="{{ country }}">{{ country }}</ion-option>

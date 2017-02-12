@@ -63,12 +63,11 @@ export class PostRentSpacePage {
             serv = this.dService.rent_space(postData);
         }
 
-        serv.post_space(postData)
-            .subscribe(response => { // On success
+        serv.subscribe(response => { // On success
             if(response.success){
                 K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
             }else{
-                K.alert(this.alertCtrl, 'Success', response.message);
+                K.alert(this.alertCtrl, 'Failed', response.message);
             }
             loading.dismiss();
         },
@@ -77,6 +76,18 @@ export class PostRentSpacePage {
             loading.dismiss();
         });
 
+  }
+  
+  clearFields(){
+      this.spaceTitle = '';
+      this.amount = '';
+      this.location = '';
+      this.image = '';
+      this.type = '';
+      this.size = '';
+      this.phone = '';
+      this.email = '';
+      this.description = '';
   }
 
 
