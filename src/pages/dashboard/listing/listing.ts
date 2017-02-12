@@ -4,25 +4,20 @@ import { DashboardService } from '../../../app/services/dashboard_service';
 import { K } from '../../../app/k/k';
 
 @Component({
-  selector: 'page-post-rent-space',
+  selector: 'page-post-job',
   templateUrl: 'template.html',
   providers: [DashboardService]
 })
-export class PostRentSpacePage {
+export class PostAJobPage {
 
-    spaceTitle:string;
-    amount:string;
-    location:string;
-    image:string;
-    type:string;
-    size:string;
-    phone:string;
-    email:string;
-    description:string;
+    allAdvert:string; 
+    pro:string;
 
-    POST_A_BARBERSHOP_SPACE:number = 0;
-    RENT_A_BARBERSHOP_SPACE:number = 1;
-    activePost:number = 0;
+    POST_AS_A_BARBER:number = 0;
+    HIRE_A_BARBER:number = 1;
+    HIRE_A_MANICURIST:number = 2;
+    // categoryArr:string[] = ['post_as_a_barber','Hire a Barber', 'post_as_a_manicurist'];
+    activeCategory:number = 0;
 
     constructor(public navCtrl: NavController,
         private alertCtrl: AlertController, private dService:DashboardService,
@@ -34,41 +29,39 @@ export class PostRentSpacePage {
         
     }
 
-    chooseAction(index:number){
-        this.activePost = index;
+    postJobAs(index:number){
+        this.activeCategory = index;
     }
 
-    post_rent_space(){
-
+    post_a_job(){
+    
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
         });
                 
         loading.present();
         let postData = {
-            spaceTitle: this.spaceTitle,
-            amount: this.amount,
+            jobTitle: this.jobTitle,
+            companyName: this.companyName,
             location: this.location,
-            type: this.type,
-            size: this.size,
+            jobDesc: this.jobDesc,
+            specification: this.specification,
+            jobType: this.jobType,
+            experience: this.experience,
+            salary: this.salary,
+            deadLine: this.deadLine,
             phone: this.phone,
             email: this.email,
-            description: this.description,
+            name: this.name,
+            category: this.activeCategory,
         };
-        
-        let serv =  null;
-        if(this.activePost == this.POST_A_BARBERSHOP_SPACE){
-            serv = this.dService.post_space(postData);
-        }else{
-            serv = this.dService.rent_space(postData);
-        }
-
-        serv.subscribe(response => { // On success
+        this.dService.post_a_job(postData)
+            .subscribe(response => { // On success
             if(response.success){
                 K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
                 this.clearFields();
             }else{
-                K.alert(this.alertCtrl, 'Failed', response.message);
+                K.alert(this.alertCtrl, 'Success', response.message);
             }
             loading.dismiss();
         },
@@ -78,17 +71,19 @@ export class PostRentSpacePage {
         });
 
   }
-  
+
   clearFields(){
-      this.spaceTitle = '';
-      this.amount = '';
+      this.jobTitle = '';
+      this.companyName = '';
       this.location = '';
-      this.image = '';
-      this.type = '';
-      this.size = '';
-      this.phone = '';
+      this.jobDesc = '';
+      this.specification = '';
+      this.jobType = '';
+      this.experience = '';
+      this.salary = '';
+      this.deadLine = '';
       this.email = '';
-      this.description = '';
+      this.name = '';
   }
 
 

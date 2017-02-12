@@ -2,7 +2,7 @@
 <ion-header>
   <ion-navbar color="primary" >
     <ion-title>
-      Post/Rent Barbershop space
+      Services and Products
     </ion-title>  
   </ion-navbar>
 </ion-header>
@@ -13,7 +13,7 @@
 
     <ion-list>
         <ion-item>
-            <div><ion-label floating>Listing</ion-label></div>
+            <div><ion-label >Listing</ion-label></div>
             <ion-select [(ngModel)]="listingID">
                 <ion-option *ngFor="let l of listingIDArr" 
                     value="{{ l.listing_data_id }}" >{{ l.title }}</ion-option>
@@ -27,20 +27,9 @@
                     value="{{ sp.name }}" >{{ sp.name }}</ion-option>
             </ion-select>
         </ion-item>
-                <!--<ion-option value="">Children's Hairdressers</ion-option>
-                <ion-option value="">ladies Hairdressers</ion-option>
-                <ion-option value="">Hair straightening</ion-option>
-                <ion-option value="">Wash cut & blow dry</ion-option>
-                <ion-option value="">Hair coloring</ion-option>
-                <ion-option value="">Hair coloring</ion-option>
-                <ion-option value="">Hair Styling</ion-option>
-                <ion-option value="">Men's Hairdressers</ion-option>
-                <ion-option value="">Barbing</ion-option>
-                <ion-option value="">Unisex Hairdressers</ion-option>
-                <ion-option value="">Beard trims</ion-option>-->
-
+        
         <ion-item>
-            <ion-label floating>Price</ion-label>
+            <div><ion-label >Price</ion-label></div>
             <ion-input type="text" [(ngModel)]="price" placeholder="Amount" ></ion-input>
         </ion-item>
         

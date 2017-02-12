@@ -68,6 +68,7 @@ export class ServicesProductsPage {
             .subscribe(response => { // On success
             if(response.success){
                 K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
+                this.clearFields();
             }else{
                 K.alert(this.alertCtrl, 'Failed', response.message);
             }
@@ -78,6 +79,12 @@ export class ServicesProductsPage {
             loading.dismiss();
         });
 
+  }
+
+  clearFields(){
+    this.listingID = '';
+    this.servicesAndProducts = '';
+    this.price = '';
   }
 
 
