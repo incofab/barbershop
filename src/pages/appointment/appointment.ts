@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams, AlertController,
     LoadingController } from 'ionic-angular';
-import { Countries } from '../../app/k/countries';
 import { K } from '../../app/k/k';
 import { GeneralService } from '../../app/services/general_service';
 
@@ -40,7 +39,7 @@ export class AppointmentPage {
 
     loading.present();
     
-    let ret = this.genService.listingsForAppointment()
+    this.genService.listingsForAppointment()
     .subscribe(response => {
         this.listngs = response.result;
         loading.dismiss();
@@ -60,7 +59,7 @@ export class AppointmentPage {
 
     loading.present();
     
-    let ret = this.genService.bookAppointment(
+    this.genService.bookAppointment(
         this.sendTo, this.email, this.phone, this.date, 
         this.arrivalTime, this.purpose)
         .subscribe(response => {

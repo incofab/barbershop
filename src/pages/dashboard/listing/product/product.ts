@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, NavParams } from 'ionic-angular';
 import { DashboardService } from '../../../../app/services/dashboard_service';
-import { K } from '../../../../app/k/k';
 import { OrderPage } from '../order/order';
 
 @Component({

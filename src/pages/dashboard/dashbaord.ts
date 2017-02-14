@@ -13,7 +13,6 @@ import { ViewAppliedJobsPage } from './view_applied_jobs/page';
 import { ViewPostedJobsPage } from './view_posted_jobs/page';
 import { ListingsPage } from './listing/listing';
 import { ViewListingsPage } from './listing/view/view_listing';
-import { PaymentMethodPage } from './payment/payment_method';
 
 @Component({
   selector: 'dashboard-home',

@@ -28,7 +28,7 @@ export class HireBarberPage {
 
     loading.present();
     
-    let ret = this.genService.loadAllVacancies()
+    this.genService.loadAllVacancies()
     .subscribe(response => {
         this.vacancies = response.result;
         loading.dismiss();

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import {SERVER_URL} from './config';
 import { Http, Headers } from '@angular/http';
-import {Observable} from 'rxjs';
+// import {Observable} from 'rxjs';
 import 'rxjs/Rx';
 import { K } from '../../app/k/k';
 

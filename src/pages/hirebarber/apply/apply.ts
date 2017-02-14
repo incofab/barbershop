@@ -39,7 +39,7 @@ export class ApplyModal {
             poster_user_id : this.detail.poster_user_id, 
         };
 
-        let ret = this.genService.applyAsBarber(postData)
+        this.genService.applyAsBarber(postData)
         .subscribe(response => {
             if(response.success)
                 K.alert(this.alertCtrl, 'Sent!:', 'Application has been sent successfully');

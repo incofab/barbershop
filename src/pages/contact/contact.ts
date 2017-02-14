@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams, AlertController,
     LoadingController } from 'ionic-angular';
-import { Countries } from '../../app/k/countries';
 import { K } from '../../app/k/k';
 import { GeneralService } from '../../app/services/general_service';
 
@@ -37,7 +36,7 @@ export class ContactUsPage {
 
     loading.present();
     
-    let ret = this.genService.contactUs(this.firstname, 
+    this.genService.contactUs(this.firstname, 
         this.lastname, this.email, this.subject, this.message)
         .subscribe(response => {
         if(response.success)
