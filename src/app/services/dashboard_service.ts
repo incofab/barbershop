@@ -134,7 +134,7 @@ export class DashboardService {
 
    signup(values:any){
        
-        let url: string = K.getBaseURL() + 'register.php?r=register&';
+        let url: string = K.getBaseURL() + 'register.php?r=register';
         
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let body = new FormData();
@@ -147,6 +147,41 @@ export class DashboardService {
         body.append('organisation', values.organisation);
         body.append('country', values.country);
 
+        return this.http.post(url, body, headers).map(res => res.json());
+
+   }
+   
+   getAllPricing(){
+        let url: string = K.getBaseURL() + 'dashboard_api.php?r=all_pricing&'
+            + this.token();
+
+       return this.http.get(url).map(res => res.json());
+   }
+   getAllPostedJobs(){
+        let url: string = K.getBaseURL() + 'dashboard_api.php?r=view_advertisement&'
+            + this.token();
+
+       return this.http.get(url).map(res => res.json());
+   }
+
+   registerOrder(body:FormData){
+       
+        let url: string = K.getBaseURL() + 'dashboard_api.php?r=register_order&';
+            + this.token();
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+       
+        return this.http.post(url, body, headers).map(res => res.json());
+
+   }
+
+   savePaymentMethod(body:FormData){
+       
+        let url: string = K.getBaseURL() + 'dashboard_api.php?r=transaction_methods&'
+            + this.token();
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+       
         return this.http.post(url, body, headers).map(res => res.json());
 
    }

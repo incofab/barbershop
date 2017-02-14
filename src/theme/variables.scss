@@ -36,11 +36,14 @@ $colors: (
   dark:       #222
 );
 
-.alert-radio-label{
+.alert-radio-label, .alert-checkbox-label, {
   color: #333;
 }
 .inline-block{
   display: inline-block;
+}
+.inline{
+  display: inline;
 }
 
 // App iOS Variables

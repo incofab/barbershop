@@ -23,6 +23,10 @@ import { ServicesProductsPage } from '../pages/dashboard/services_products/page'
 import { SignupPage } from '../pages/dashboard/signup/signup';
 import { ViewAppliedJobsPage } from '../pages/dashboard/view_applied_jobs/page';
 import { ViewPostedJobsPage } from '../pages/dashboard/view_posted_jobs/page';
+import { ListingsPage } from '../pages/dashboard/listing/listing';
+import { ProductPage } from '../pages/dashboard/listing/product/product';
+import { OrderPage } from '../pages/dashboard/listing/order/order';
+import { ViewListingsPage } from '../pages/dashboard/listing/view/view_listing';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,10 @@ import { ViewPostedJobsPage } from '../pages/dashboard/view_posted_jobs/page';
     SignupPage,
     ViewAppliedJobsPage,
     ViewPostedJobsPage,
+    ListingsPage,
+    ProductPage,
+    OrderPage,
+    ViewListingsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -74,6 +82,10 @@ import { ViewPostedJobsPage } from '../pages/dashboard/view_posted_jobs/page';
     SignupPage,
     ViewAppliedJobsPage,
     ViewPostedJobsPage,
+    ListingsPage,
+    ProductPage,
+    OrderPage,
+    ViewListingsPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
       Storage]

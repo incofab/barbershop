@@ -35,8 +35,22 @@
 
     </div>
 
-
   <ion-list *ngIf="isLoggedIn" >
+
+    <ion-item (click)="listing()" >
+        <ion-thumbnail item-left>
+            <img src="">
+        </ion-thumbnail>
+        <h2>Listings</h2>
+        <p>Subscribe to any of our packages</p>
+    </ion-item>
+    <ion-item (click)="viewListing()" >
+        <ion-thumbnail item-left>
+            <img src="">
+        </ion-thumbnail>
+        <h2>View Listings</h2>
+        <p>View listings</p>
+    </ion-item>
     <ion-item (click)="post_a_job()" >
         <ion-thumbnail item-left>
             <img src="">
@@ -72,6 +86,13 @@
         <h2>Services & Products</h2>
         <p>Display the products and services you offer</p>
     </ion-item>
+    <ion-item (click)="paymentMethod()">
+        <ion-thumbnail item-left>
+            <img src="">
+        </ion-thumbnail>
+        <h2>Payment Methods</h2>
+        <p>Choose your prefered Payment Methods</p>
+    </ion-item>
 
     <ion-item (click)="logout()">
         <ion-thumbnail item-left>
@@ -80,6 +101,7 @@
         <h2>Logout</h2>
         <p>logout</p>
     </ion-item>
+    
 </ion-list>
 
 </ion-content>

@@ -1,0 +1,113 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      {{ name }}
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="product" >
+    
+    <div text-center >
+        <h2><b>Term:</b> <span>{{ billing_period }}</span></h2>
+        <h2><b>Price:</b> <span>${{ price }}</span></h2>
+    </div>
+
+    <ion-list *ngFor="let product of products; let i = index">
+        <ion-item >
+            <span><b>Category Limit</b></span> <span>{{ product.pcategory_limit }}</span>
+        </ion-item>
+        <ion-item >
+            <span><b>Featured</b></span> <span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Phone</b></span> <span><i class="fa fa-check" *ngIf="product.pphone"></i><i class="fa fa-times text-danger" *ngIf="!product.pphone"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Fax</b></span> <span><i class="fa fa-check" *ngIf="product.pfax"></i><i class="fa fa-times text-danger" *ngIf="!product.pfax"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Address</b></span> <span><i class="fa fa-check" *ngIf="product.paddress" ></i><i class="fa fa-times text-danger" *ngIf="!product.paddress"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Zip code</b></span> <span><i class="fa fa-check" *ngIf="product.pzip"></i><i class="fa fa-times text-danger" *ngIf="!product.pzip"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Hours</b></span> <span><i class="fa fa-check" *ngIf="product.phours"></i><i class="fa fa-times text-danger" *ngIf="!product.phours"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Email</b></span> <span><i class="fa fa-check" *ngIf="product.pemail"></i><i class="fa fa-times text-danger" *ngIf="!product.pemail"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Website</b></span> <span><i class="fa fa-check"  *ngIf="product.pwebsite"></i><i class="fa fa-times text-danger" *ngIf="!product.pwebsite" ></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Map</b></span> <span><i class="fa fa-check"  *ngIf="product.pmap"></i><i class="fa fa-times text-danger"  *ngIf="!product.pmap"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Logo</b></span> <span><i class="fa fa-check"  *ngIf="product.plogo"></i><i class="fa fa-times text-danger"  *ngIf="!product.plogo"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Reviews</b></span> <span><i class="fa fa-check"  *ngIf="product.previews"></i><i class="fa fa-times text-danger"  *ngIf="!product.previews"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Ratings</b></span> <span><i class="fa fa-check"  *ngIf="product.pratings"></i><i class="fa fa-times text-danger"  *ngIf="!product.pratings"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Suggestions</b></span> <span><i class="fa fa-check" *ngIf="product.psuggestions"></i><i class="fa fa-times text-danger"  *ngIf="!product.psuggestions"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Print</b></span> <span><i class="fa fa-check"  *ngIf="product.pprint"></i><i class="fa fa-times text-danger"  *ngIf="!product.pprint"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Classified Images</b></span> <span><i class="fa fa-check"  *ngIf="product.pclassified_images"></i><i class="fa fa-times text-danger"  *ngIf="!product.pclassified_images"></i></span>
+        </ion-item>
+
+        <ion-item >
+            <span><b>Classified Limit</b></span>  <span><span class="badge">{{ product.pclassified_limit }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Image Gallery</b></span>  <span><span class="badge">{{ product.pimage_gallery_limit }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Keyword Limit</b></span>  <span><span class="badge">{{ product.pdocuments_limit }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Title size</b></span>  <span><span class="badge">{{ product.ptitle_size }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Description size</b></span>  <span><span class="badge">{{ product.pdescription_size }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Description Image Limit</b></span>  <span><span class="badge">{{ product.pdescription_image_limit }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Short Description size</b></span>  <span><span class="badge">{{ product.pshort_description_size }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Keyword Limit</b></span>  <span><span class="badge">{{ product.pkeyword_limit }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Meta Title size</b></span>  <span><span class="badge">{{ product.pmeta_title_size }}</span></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Meta Keywords Limit</b></span>  <span><span class="badge">{{ product.pmeta_keywords_limit }}</span></span>
+        </ion-item>
+        
+        <ion-item >
+            <span><b>Side Banner</b></span> <span><i class="fa fa-check"  *ngIf="product.pside_banner" ></i><i class="fa fa-times text-danger"  *ngIf="!product.pside_banner"></i></span>
+        </ion-item>
+        <ion-item >
+            <span><b>Top Banner</b></span> <span><i class="fa fa-check"  *ngIf="product.ptop_banner"></i><i class="fa fa-times text-danger"  *ngIf="!product.ptop_banner" ></i></span>
+        </ion-item>
+
+    <hr />
+
+    </ion-list>
+
+
+    <button ion-button outline (click)="orderNow()">Order Now</button>
+
+
+</ion-content>

@@ -3,6 +3,7 @@ import { NavController, AlertController, LoadingController} from 'ionic-angular'
 import { Storage } from '@ionic/storage';
 import { DashboardService } from '../../app/services/dashboard_service';
 import { K } from '../../app/k/k';
+import { PaymentMethod } from '../../app/k/payment_method';
 import { SignupPage } from './signup/signup';
 
 import { PostAJobPage } from './post_a_job/page';
@@ -10,6 +11,9 @@ import { PostRentSpacePage } from './post_a_space/page';
 import { ServicesProductsPage } from './services_products/page';
 import { ViewAppliedJobsPage } from './view_applied_jobs/page';
 import { ViewPostedJobsPage } from './view_posted_jobs/page';
+import { ListingsPage } from './listing/listing';
+import { ViewListingsPage } from './listing/view/view_listing';
+import { PaymentMethodPage } from './payment/payment_method';
 
 @Component({
   selector: 'dashboard-home',
@@ -74,6 +78,12 @@ export class DashboardPage {
         );            
     }
 
+    listing(){
+        this.navCtrl.push(ListingsPage);
+    }
+    viewListing(){
+        this.navCtrl.push(ViewListingsPage);
+    }
     gotoSignUpPage(){
         this.navCtrl.push(SignupPage);
     }
@@ -91,6 +101,12 @@ export class DashboardPage {
     }
     servicesProducts(){
         this.navCtrl.push(ServicesProductsPage);
+    }
+    paymentMethod(){
+        // this.navCtrl.push(PaymentMethodPage);
+        let p = new PaymentMethod();
+        p.retrievePaymentMethod(this.loadingCtrl, this.alertCtrl, this.dService, this.storage);
+
     }
 
     logout(){

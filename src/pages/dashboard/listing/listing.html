@@ -10,19 +10,20 @@
 <ion-content padding class="listing" >
 
     <ion-grid > 
-        <ion-row wrap *ngFor="let advert of allAdvert; let i = index" > 
-            <ion-col width-50 >
+        <ion-row wrap  (click)="openDetails(i)"
+                *ngFor="let advert of allAdvert; let i = index" center > 
+            <ion-col width-80 center >
                 <h1 text-center>{{ advert.pname }}</h1>
                 <div padding>
                     <h2 text-center>${{ advert.price }}/{{ advert.billing_period}}</h2>
                 </div>                        
             </ion-col>
-            <ion-col width-50 >
+            <!--<ion-col width-50 *ngIf="(i%2 == 1)" >
                 <h1 text-center>{{ advert.pname }}</h1>
                 <div padding>
                     <h2 text-center>${{ advert.price }}/{{ advert.billing_period}}</h2>
                 </div>
-            </ion-col>
+            </ion-col>-->
         </ion-row> 
     </ion-grid>
 

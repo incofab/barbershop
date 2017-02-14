@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
-import { DashboardService } from '../../../app/services/dashboard_service';
-import { K } from '../../../app/k/k';
-import { ProductPage } from './product/product';
+import { DashboardService } from '../../../../app/services/dashboard_service';
+import { K } from '../../../../app/k/k';
 
 @Component({
-  selector: 'listing-page',
-  templateUrl: 'listing.html',
+  selector: 'view-listing-page',
+  templateUrl: 'view_listing.html',
   providers: [DashboardService]
 })
-export class ListingsPage {
+export class ViewListingsPage {
 
-    allAdvert:any; 
-    products:any;
-
-    activeCategory:number = 0;
+    allPostedJobs:any; 
 
     constructor(public navCtrl: NavController,private alertCtrl: AlertController, 
         private dService:DashboardService, private loadingCtrl: LoadingController) {
@@ -22,20 +18,10 @@ export class ListingsPage {
     }
 
     ngOnInit(){
-        this.getAllAdverts();
+        this.loadAll_PostedJobs();
     }
 
-    openDetails(index:number){
-        let product = this.products[index];
-        this.navCtrl.push(ProductPage, {
-            product: product,
-            name: this.allAdvert[index].pname,
-            price: this.allAdvert[index].price,
-            billing_period: this.allAdvert[index].billing_period,
-        });
-    }
-
-    getAllAdverts(){
+    loadAll_PostedJobs(){
     
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
@@ -43,11 +29,10 @@ export class ListingsPage {
                 
         loading.present();
     
-        this.dService.getAllPricing()
+        this.dService.getAllPostedJobs()
             .subscribe(response => { // On success
             if(response.success){
-                this.allAdvert = response.result[0];
-                this.products = response.result[1];
+                this.allPostedJobs = response.result;
             }else{
                 K.alert(this.alertCtrl, 'Failed', 'Data retrieval Failed');
             }

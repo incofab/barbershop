@@ -71,7 +71,7 @@ export class PostAJobPage {
                 K.alert(this.alertCtrl, 'Success', 'Post sent successfully');
                 this.clearFields();
             }else{
-                K.alert(this.alertCtrl, 'Success', response.message);
+                K.alert(this.alertCtrl, 'Failed', response.message);
             }
             loading.dismiss();
         },

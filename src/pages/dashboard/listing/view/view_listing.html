@@ -1,0 +1,37 @@
+
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>
+      View Listing
+    </ion-title>  
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="view_listing" >
+    
+    <ion-list >
+        
+        <ion-item *ngFor="let l of allPostedJobs; let i = index" >
+            <ion-card>
+                <ion-card-header>
+                    <h2>{{ l.title }}</h2>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>{{ l.short_description }}</p>
+                    <p><span><b>Email: </b></span> <span>{{ l.email }}</span></p>
+                    <p><span><b>Website: </b></span> <span>{{ l.website }}</span></p>
+                    <p><span><b>Phone: </b></span> <span>{{ l.phone }}</span></p>
+
+                    <div [ngSwitch]="l.status" >
+                        <p *ngSwitchCase="1"><span><b>Status: </b></span> <span>{{ (l.status == 1) ? 'Approved' : '' }}</span></p>
+                        <p *ngSwitchCase="0"><span><b>Status: </b></span> <span>{{ (l.status == 1) ? 'Pending' : '' }}</span></p>
+                        <p *ngSwitchDefault ><span><b>Status: </b></span> <span>{{ (l.status == 1) ? 'Suspended' : '' }}</span></p>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+        
+
+    </ion-list>
+
+</ion-content>
