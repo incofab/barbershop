@@ -28,6 +28,7 @@ $font-path: "../assets/fonts";
 $colors: (
   primary:    #2a65e5,
   secondary:  #c4ec0f,
+  secondary-dark:  #87a00e,
   background-ios-color: #2255b1,
   background-md-color: #2255b1,
   background-wp-color: #2255b1,
@@ -36,8 +37,22 @@ $colors: (
   dark:       #222
 );
 
-.alert-radio-label, .alert-checkbox-label, {
+.button, [ion-button], .button-md{ 
+  width: auto !important; 
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  display: block;
+  margin: auto;
+} 
+ion-item{
+  margin-bottom: 5px;
+}
+.alert-button{
+  width: auto;
+}
+.alert-radio-label, .alert-checkbox-label, .alert-tappable{
   color: #333;
+  margin: none;
 }
 .inline-block{
   display: inline-block;
@@ -45,6 +60,13 @@ $colors: (
 .inline{
   display: inline;
 }
+.back-button, .back-button-md{
+    max-width: 8%;
+}
+.clear{
+    clear: both;
+}
+
 
 // App iOS Variables
 // --------------------------------------------------

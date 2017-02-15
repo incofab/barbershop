@@ -7,33 +7,26 @@
   </ion-navbar>
 </ion-header> 
   
-<ion-content padding >
+<ion-content padding class="hire-barber">
 
     <!--<ion-searchbar [(ngModel)]="searchword" (cancel)="searchCancelled()"
         (keyup)="keyHasBeenPressed(event)" ></ion-searchbar>-->
 
-    <ion-list>
+    <ion-card  (click)="openDetails(i)"
+        *ngFor="let vacancy of vacancies, let i = index">
         
-        <ion-item *ngFor="let vacancy of vacancies, let i = index" 
-            (click)="openDetails(i)">
-            <div text-center >
-                <b>{{ vacancy.title }}</b><br /> 
-                <small>{{ vacancy.company }}</small>
-            </div>            
-             
-             <ion-grid > 
-                <ion-row wrap > 
-                    <ion-col width-50 >
-                        <small><i class="fa fa-map-marker"></i> &nbsp; &nbsp;
-                        {{ vacancy.location }}</small>
-                    </ion-col>
-                    <ion-col width-50 >
-                        <small><b>Experience: </b>{{ vacancy.experience }}</small>
-                    </ion-col>
-                </ion-row>
-             </ion-grid>
-        </ion-item>
+        <ion-card-content>
+        
+            <ion-card-header >
+                {{ vacancy.job_title }} 
+            </ion-card-header >
 
-    </ion-list>
+            <p><b>Job Description: </b> {{ vacancy.job_description }}</p>
+            <p><b>Specification: </b> {{ vacancy.specification }}</p>
+            <p><b>Experience: </b> {{ vacancy.preferred_years_of_experience }}</p>
+
+        </ion-card-content>
+
+    </ion-card>
 
 </ion-content>

@@ -22,6 +22,8 @@ export class BarberShopsPage {
 
     shops:any;
     shopsNoPayment:any;
+    toViewAll: boolean = false;
+    webRootPath:string = K.getMainBaseURL();
     
     k_country:Countries = null;
 
@@ -42,6 +44,10 @@ export class BarberShopsPage {
   }
 
   listShops(){
+    if(this.toViewAll){
+        this.viewAll();
+        return;
+    }
     
     if(this.selectedCountryIndex < 0 || this.selectedStateIndex < 0){
         K.alert(this.alertCtrl, 'Invalid Request', 'Select a Country and state');
@@ -71,7 +77,7 @@ export class BarberShopsPage {
 
   }
 
-    viewAll(){
+    private viewAll(){
     
         let loading = this.loadingCtrl.create({
             content: 'Loading...',
@@ -95,20 +101,5 @@ export class BarberShopsPage {
         });
 
     }
-
-//   dummyshops(){
-//       let shops = [];
-//       for(let i = 0; i<10; i++){
-//           shops[i] = {
-//               title: 'Lorem ipsum dolor sit amet, consectetur',
-//               name: 'Omega barbers',
-//               address: 'elit. Quisquam numquam odit sint a eos incidunt consequuntur',
-//               phone: '070434565664',
-//               email: 'mail@yahoo.com',
-//               rating: 4
-//           }
-//       }
-//       return shops;
-//   }
 
 }

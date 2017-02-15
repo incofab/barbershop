@@ -20,6 +20,7 @@ export class AppointmentPage {
     purpose:string = '';
     listngs:any;
     isListings:boolean = true;
+    webRootPath:string = K.getMainBaseURL();
 
   constructor(public navCtrl: NavController, private navParams: NavParams,
     private alertCtrl: AlertController, private genService:GeneralService,

@@ -6,7 +6,8 @@ import { Countries } from '../../app/k/countries';
 
 @Component({
   selector: 'page-search',
-  templateUrl: 'search.html'
+  templateUrl: 'search.html',
+  providers: [GeneralService]
 })
 export class SearchBarberShopPage {
 
@@ -34,26 +35,27 @@ export class SearchBarberShopPage {
         
         let loading = this.loadingCtrl.create({
            content: 'Loading...',
-           dismissOnPageChange: true
         });
 
         loading.present();
         
-        let ret = this.genService.searchFavouriteBarberShop(
+        this.genService.searchFavouriteBarberShop(
             this.shopName, this.selectedCountry, this.nearMe
-        );
-        
-        if(ret._isScalar == false){
-            loading.dismiss();
-            K.alert(this.alertCtrl, 'Error:', 'Could not connect to server');
-            return;
-        }
+        ).subscribe(response => {
+            console.log(response);
+            if(response.success){
+                this.shops = response.result;         
+                this.showSearchResults = true;
 
-        ret.subscribe(response => {
+            }else{
+                K.alert(this.alertCtrl, 'Failed', 'Data retrieval failed');
+            }
             loading.dismiss();
-            this.showSearchResults = true;
-            this.shops = response.json();            
-            this.shops = this.dummyShops();            
+            // this.shops = this.dummyShops();            
+        },
+        (err: any) => { // on error
+            loading.dismiss();
+            K.alert(this.alertCtrl, 'Network error', 'Data retrieval failed');
         });
 
     }

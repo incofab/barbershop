@@ -1,0 +1,20 @@
+.hire-barber{
+
+    ion-card{
+        cursor: pointer;
+    }
+    
+    ion-card-header, .card-header-md{
+        padding: 0px;
+    }
+
+    button{
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px; 
+    }
+    ion-co ion-label{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}

@@ -7,51 +7,40 @@
   </ion-navbar>
 </ion-header>
   
-<ion-content padding class="barber-shool-list" >
+<ion-content padding class="barber-school-list" >
 
+        <ion-card *ngFor="let school of schools, let i = index">
+            <ion-card-content>
+                <ion-card-header >
+                    {{ school.title }} 
+                </ion-card-header >
+                <ion-thumbnail >
+                    <img src="{{ webRootPath }}uploads/classified/{{school.classified_image}}" alt="">
+                </ion-thumbnail>
+                <ion-label><small>{{ school.short_description }}</small></ion-label>
+                <ion-label><small><i class="fa fa-map-marker"></i>&nbsp;&nbsp; {{ school.address }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-envelope-o"></i>&nbsp;&nbsp; {{ school.email }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-phone"></i>&nbsp;&nbsp; {{ school.phone }}</small></ion-label>            
 
-    <ion-list>
-        
-        <ion-item *ngFor="let school of schools, let i = index" 
-            (click)="openDetails(i)">
-            <div text-center >
-                <b>{{ school.title }}</b><br /> 
-                <small>{{ school.location }}</small>
-            </div>            
-             
-             <ion-grid > 
-                <ion-row wrap > 
-                    <ion-col width-50 >
-                        <small><i class="fa fa-map-marker"></i> &nbsp; &nbsp;
-                        {{ school.location }}</small>
-                    </ion-col>
-                    <ion-col width-50 >
-                        <small><b>Experience: </b>{{ school.experience }}</small>
-                    </ion-col>
-                </ion-row>
-             </ion-grid>
-        </ion-item>
-        
-        <ion-item *ngFor="let school of schoolsNoPayment, let i = index" 
-            (click)="openDetails(i)">
-            <div text-center >
-                <b>{{ school.title }}</b><br /> 
-                <small>{{ school.location }}</small>
-            </div>            
-             
-             <ion-grid > 
-                <ion-row wrap > 
-                    <ion-col width-50 >
-                        <small><i class="fa fa-map-marker"></i> &nbsp; &nbsp;
-                        {{ school.location }}</small>
-                    </ion-col>
-                    <ion-col width-50 >
-                        <small><b>Experience: </b>{{ school.experience }}</small>
-                    </ion-col>
-                </ion-row>
-             </ion-grid>
-        </ion-item>
+            </ion-card-content>
+        </ion-card>
 
-    </ion-list>
+        <ion-card *ngFor="let school of schoolsNoPayment, let i = index">
+            <ion-card-content>
+                <ion-card-header >
+                    {{ school.title }} 
+                </ion-card-header >
+                <ion-thumbnail >
+                    <img src="{{ webRootPath }}uploads/classified/{{school.classified_image}}" alt="">
+                </ion-thumbnail>
+                
+                <ion-label><small>{{ school.short_description }}</small></ion-label>
+                <ion-label><small><i class="fa fa-map-marker"></i>&nbsp;&nbsp; {{ school.address }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-envelope-o"></i>&nbsp;&nbsp; {{ school.email }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-phone"></i>&nbsp;&nbsp; {{ school.phone }}</small></ion-label>            
+
+            </ion-card-content>
+
+        </ion-card>
 
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { K } from '../../../app/k/k';
 
 @Component({
   selector: 'barber-school-lists-page',
@@ -10,6 +11,7 @@ export class BarberSchoolListsPage {
 
     schools: any;
     schoolsNoPayment: any;
+    webRootPath:string = K.getMainBaseURL();
     constructor(public navCtrl: NavController, private navParams: NavParams,
         private alertCtrl: AlertController) {
     }

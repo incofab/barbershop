@@ -11,56 +11,26 @@
 
 <ion-card>
   
-  <ion-card-header>
-    <h2>{{ detail.title }}</h2>
-  </ion-card-header>
+    <ion-card-header>
+        detail.job_title
+    </ion-card-header>
 
-  <ion-card-content>
-    <ion-grid > 
-        <ion-row wrap > 
-            <ion-col width-50 >
-                <small><b>Salary: </b>{{ detail.salary }}</small>
-            </ion-col>
-            <ion-col width-50 >
-                <small><b>Experience: </b>{{ detail.experience }}</small>
-            </ion-col>
-        </ion-row>
-        <ion-row wrap > 
-            <ion-col width-50 >
-                <small><b>Date posted: </b>{{ detail.date }}</small>
-            </ion-col>
-            <ion-col width-50 >
-                <small><b>Location: </b>{{ detail.location }}</small>
-            </ion-col>
-        </ion-row>
-        <ion-row wrap > 
-            <ion-col width-50 >
-                <small><b>Job type: </b>{{ detail.job_type }}</small>
-            </ion-col>
-            <ion-col width-50 >
-                <small><b>Description: </b>{{ detail.description }}</small>
-            </ion-col>
-        </ion-row>
-        <ion-row wrap > 
-            <ion-col width-50 >
-                <small><b>specification: </b>{{ detail.specification }}</small>
-            </ion-col>
-            <ion-col width-50 >
-                <small><b>email: </b>{{ detail.email }}</small>
-            </ion-col>
-        </ion-row>
-        <ion-row wrap > 
-            <ion-col width-50 >
-                <small><b>phone: </b>{{ detail.phone }}</small>
-            </ion-col>
-            <ion-col width-50 >
-                <button ion-button round (click)="apply()">Apply</button>
-            </ion-col>
-        </ion-row>
-    
-    </ion-grid>
+    <ion-card-content>
+        
+        <p><b>Job Description: </b>&nbsp; {{ detail.job_description }}</p>
+        <p><b>Specification: </b>&nbsp; {{ detail.specification }}</p>
+        <p><b>Location: </b>&nbsp; {{ detail.location }}</p>
+        <p><b>Experience: </b>&nbsp; {{ detail.preferred_years_of_experience }}</p>
+        <p><b>Date posted: </b>&nbsp; {{ detail.date_posted }}</p>
+        <p><b>Job Type: </b>&nbsp; {{ detail.job_type }}</p>
+        <p><b>Specification: </b>&nbsp; {{ detail.specification }}</p>
+        <p><b>Job description: </b>&nbsp; {{ detail.job_description }}</p>
 
-  </ion-card-content>
+        <p><b>Dead Line: </b>&nbsp; {{ detail.dead_line }}</p>
+
+        <button ion-button round (click)="apply()">Apply</button>
+
+    </ion-card-content>
 
 </ion-card>
 

@@ -2,4 +2,15 @@
     ion-col{
         text-align: left;
     }
+    ion-card-header{
+        color: map-get($colors, primary);
+    }
+    ion-card-content > p {
+        
+        margin-bottom: 10px;
+
+        b{
+            color: map-get($colors, secondary-dark);
+        }
+    }
 }

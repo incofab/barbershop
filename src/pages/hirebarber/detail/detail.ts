@@ -17,17 +17,19 @@ export class DetailsModal {
         this.detail = params.get('detail');
     }
 
-
-
     apply(){
-        
-        if(!K.isUserLoggedIn(this.storage)){
-            K.alert(this.alertCtrl, "Notice:", 'You need to be logged in to apply');
-            return;
-        }
-        this.navCtrl.push(ApplyModal,{
-           detail : this.detail
-        });
+        // First check if user is logged in
+        this.storage.get(K.TOKEN)
+            .then( (val) => {
+                if(val){
+                    this.navCtrl.push(ApplyModal,{
+                        detail : this.detail
+                    });
+                }else{
+                    K.alert(this.alertCtrl, "Notice:", 'You need to be logged in to apply');
+                }
+            });
+
     }
 
 

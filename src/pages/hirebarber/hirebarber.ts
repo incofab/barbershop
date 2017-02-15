@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController,
     LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { DetailsModal } from './detail/detail';
 import { GeneralService } from '../../app/services/general_service';
 import { K } from '../../app/k/k';
@@ -16,7 +17,7 @@ export class HireBarberPage {
 
   constructor(public navCtrl: NavController, private params: NavParams,
         private alertCtrl: AlertController, private genService:GeneralService,
-        private loadingCtrl: LoadingController) {
+        private loadingCtrl: LoadingController, private storage: Storage) {
       this.loadVacancies();
   }
 
@@ -45,6 +46,17 @@ export class HireBarberPage {
            detail : this.vacancies[index]
       });
   }
+  
+    // apply(index:number){
+
+    //     if(!K.isUserLoggedIn(this.storage)){
+    //         K.alert(this.alertCtrl, "Notice:", 'You need to be logged in to apply');
+    //         return;
+    //     }
+    //     this.navCtrl.push(ApplyModal,{
+    //         detail : this.vacancies[index]
+    //     });
+    // }
 
 
 }

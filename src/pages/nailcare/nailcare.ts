@@ -13,6 +13,7 @@ export class NailCarePage {
 
     nailcareCenters: any;
     nailcareCentersNoPayment: any;
+    webRootPath:string = K.getMainBaseURL();
     constructor(public navCtrl: NavController, private loadingCtrl: LoadingController,
         private genService:GeneralService, private alertCtrl:AlertController) {
 

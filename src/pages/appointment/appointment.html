@@ -2,52 +2,46 @@
 <ion-header>
   <ion-navbar color="primary" >
     <ion-title>
-        <div>
-            Book Appointment
-        </div>
-      <div>
-        <button *ngIf="!isListings" 
-            style="width: 30px; float: right; margin-right: 5px;"  (click)="backToListings()">Back</button>
-        <div class="clear"></div>
-      </div>
+        Book Appointment
     </ion-title>  
   </ion-navbar>
 </ion-header>
   
-<ion-content padding class="barber-shool" >
+<ion-content padding class="appointment" >
 
-    <ion-list class="listing" *ngIf="isListings">
-        
-        <ion-item *ngFor="let shop of listngs, let i = index" >
-            
-            <ion-card>
-                <div text-center >
-                    <b>{{ shop.title }}</b><br /> 
-                    <small>{{ shop.name }}</small>
-                </div>
+    <div  *ngIf="isListings" >
+        <ion-card *ngFor="let shop of listngs, let i = index">
+            <ion-card-content>
+                <ion-card-header >
+                    {{ shop.title }} 
+                </ion-card-header >
+                <ion-thumbnail >
+                    <img src="{{ webRootPath }}uploads/classified/{{shop.classified_image}}" alt="">
+                </ion-thumbnail>
+                <span><small>{{ shop.short_description }}</small></span>
+                <ion-label><small><i class="fa fa-map-marker"></i>&nbsp;&nbsp; {{ shop.address }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-envelope-o"></i>&nbsp;&nbsp; {{ shop.email }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-phone"></i>&nbsp;&nbsp; {{ shop.phone }}</small></ion-label>            
 
-                <ion-grid > 
-                    <ion-row wrap > 
-                        <ion-col width-50 >
-                            <p><small><i class="fa fa-map-marker"></i> {{ shop.address }}</small></p>            
-                            <p><small><i class="fa fa-phone"></i> {{ shop.phone }}</small></p>            
-                            <small><i class="fa fa-envelop"></i> {{ shop.email }}</small>
-                        </ion-col>
-                        <ion-col width-50 >
-                            <small><b>Rating: </b>*****</small>
-                            <button ion-button (click)="bookAppointment(i)">Book Appointment</button>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-  
-            </ion-card>
-             
-        </ion-item>
+                <button ion-button (click)="bookAppointment(i)">Book Appointment</button>
 
-    </ion-list>
+            </ion-card-content>
+
+        </ion-card>
+
+    </div>
+
 
     <div *ngIf="!isListings">
-        <ion-list >
+
+        <button ion-button *ngIf="!isListings" 
+            style="margin-right: 5px; display: inline; width: auto; float: right; "  
+            (click)="backToListings()">Back</button>
+        <!--<div class="clear"></div>-->
+
+        <div padding ></div>
+
+        <ion-list no-lines >
             <ion-item>
                 <ion-label floating>To</ion-label>
                 <ion-input type="text" [(ngModel)]="sendTo" ></ion-input>
@@ -61,11 +55,11 @@
                 <ion-input type="text" [(ngModel)]="phone" ></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label floating>Date</ion-label>
+                <ion-label stacked>Date</ion-label>
                 <ion-input type="date" [(ngModel)]="date" ></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label floating>Arrival Time</ion-label>
+                <ion-label stacked >Arrival Time</ion-label>
                 <ion-input type="time" [(ngModel)]="arrivalTime" ></ion-input>
             </ion-item>
         </ion-list>

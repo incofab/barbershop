@@ -10,73 +10,57 @@
 <ion-content padding class="nailcare" >
 
 
-    <ion-list>
-    
-    <ion-item *ngFor="let center of nailcareCenters; let i = index" >
-        
-        <ion-card>
-            <div text-center >
-                <b>{{ center.title }}</b><br /> 
-                <small>{{ center.name }}</small>
-            </div>
-            <p><small><i class="fa fa-map-marker"></i> {{ center.address }}</small></p>            
-            <p><small><i class="fa fa-phone"></i> {{ center.phone }}</small></p>            
 
-            <ion-grid > 
-                <ion-row wrap > 
-                    <ion-col width-50 >
-                        <small><i class="fa fa-envelop"></i> {{ center.email }}</small>
-                    </ion-col>
-                    <ion-col width-50 >
-                        <small><b>Rating: </b>*****</small>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-
+        <ion-card *ngFor="let center of nailcareCenters, let i = index">
+            <ion-card-content>
+                <ion-card-header >
+                    {{ center.title }} 
+                </ion-card-header >
+                <ion-thumbnail >
+                    <img src="{{ webRootPath }}uploads/classified/{{center.classified_image}}" alt="">
+                </ion-thumbnail>
+                <ion-label><small>{{ center.short_description }}</small></ion-label>
+                <ion-label><small><i class="fa fa-map-marker"></i>&nbsp;&nbsp; {{ center.address }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-envelope-o"></i>&nbsp;&nbsp; {{ center.email }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-phone"></i>&nbsp;&nbsp; {{ center.phone }}</small></ion-label>            
+                 <p class="star-rating"><small><b>Rating: &nbsp;</b>
+                    <span >
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </span>
+                </small></p>
+            </ion-card-content>
         </ion-card>
-            
-    </ion-item>
-    
 
-    <ion-item *ngFor="let center of nailcareCentersNoPayment; let i = index" >
-        
-        <ion-card>
-
-            <ion-thumbnail item-left>
-                <img src="uploads/classified/{{center.classified_image}}">
-            </ion-thumbnail>
-            <h2>{{ center.title }}</h2>
-            <p>{{ center.short_description }}</p>
-
-            <br />
-
-
-            <ion-grid > 
-                <ion-row wrap > 
-                    <ion-col width-50 text-left >
-                        <p><small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;{{ center.address }}</small></p>            
-                        <p><small><i class="fa fa-phone"></i> &nbsp;&nbsp;{{ center.phone }}</small></p>            
-                    </ion-col>
-                    <ion-col width-50 text-left >
-                        <p><small><i class="fa fa-envelop"></i> {{ center.email }}</small></p>
-                        <p><small><b>Rating: &nbsp;&nbsp;</b>
-                            <span class="starRating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </span>
-                        </small></p>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-
+        <ion-card *ngFor="let center of nailcareCentersNoPayment, let i = index">
+            <ion-card-content>
+                <ion-card-header >
+                    {{ center.title }} 
+                </ion-card-header >
+                <ion-thumbnail >
+                    <img src="{{ webRootPath }}uploads/classified/{{center.classified_image}}" alt="">
+                </ion-thumbnail>
+                <ion-label><small>{{ center.short_description }}</small></ion-label>
+                <ion-label><small><i class="fa fa-map-marker"></i>&nbsp;&nbsp; {{ center.address }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-envelope-o"></i>&nbsp;&nbsp; {{ center.email }}</small></ion-label>            
+                <ion-label><small><i class="fa fa-phone"></i>&nbsp;&nbsp; {{ center.phone }}</small></ion-label>            
+                 <p class="star-rating"><small><b>Rating: &nbsp;</b>
+                    <span >
+                        <i class="fa {{ (3 >= 1) ? 'fa-star' : 'fa-star-o' }}"></i>
+                        <i class="fa {{ (3 >= 2) ? 'fa-star' : 'fa-star-o' }}"></i>
+                        <i class="fa {{ (3 >= 3) ? 'fa-star' : 'fa-star-o' }}"></i>
+                        <i class="fa {{ (3 >= 4) ? 'fa-star' : 'fa-star-o' }}"></i>
+                        <i class="fa {{ (3 >= 5) ? 'fa-star' : 'fa-star-o' }}"></i>
+                    </span>
+                </small></p>
+            </ion-card-content>
         </ion-card>
-            
-    </ion-item>
 
-    </ion-list>
+
+
 
 
 </ion-content>

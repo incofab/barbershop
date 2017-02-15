@@ -25,6 +25,13 @@ export class K {
         return false;
     }
 
+    static getMainBaseURL(): string{
+        return 'http://localhost/barbershop/';
+        // return 'http://www.barbershopconnectafrica.com/';
+    }
+    /**
+     * API base URL
+     */
     static getBaseURL(): string{
         return 'http://localhost/barbershop/app/api/';
         // return 'http://www.barbershopconnectafrica.com/app/api/';

@@ -14,15 +14,6 @@
     </ion-card>
 
     <div padding ></div>
-
-    <div>
-        <fieldset>
-            <legend>View All Barber Schools</legend>
-
-            <button ion-button padding (click)="viewAll()">View all</button>
-
-        </fieldset>
-    </div>
     
     <ion-list> 
         <ion-item >
@@ -41,10 +32,17 @@
                  value="{{ i }}">{{ state }}</ion-option>
             </ion-select>
         </ion-item> 
+        
+        <ion-item>
+            <ion-label style="color: #333" >View all</ion-label>
+            <ion-checkbox [(ngModel)]="toViewAll" 
+                style="margin: 9px;"></ion-checkbox>
+        </ion-item>
+
     </ion-list>
 
     <br />
     <button (click)="gotoListsPage()"
-         ><i class="fa fa-search"></i> &nbsp; search</button>
+         ><i class="fa fa-search"></i> &nbsp; {{ toViewAll? 'View all' : 'search' }}</button>
 
 </ion-content>

@@ -20,6 +20,7 @@ export class BarberSchoolPage {
     selectedStateIndex:number = -1;
     
     k_country:Countries = null;
+    toViewAll: boolean = false;
 
   constructor(public navCtrl: NavController, private navParams: NavParams,
     private alertCtrl: AlertController, private genService:GeneralService,
@@ -38,6 +39,11 @@ export class BarberSchoolPage {
   }
 
   gotoListsPage(){
+    
+    if(this.toViewAll){
+        this.viewAll();
+        return;
+    }
 
       if(this.selectedCountryIndex < 0 || this.selectedStateIndex < 0){
         K.alert(this.alertCtrl, 'Invalid Request', 'Select a Country and state');
