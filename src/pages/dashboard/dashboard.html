@@ -12,7 +12,7 @@
   </ion-navbar>
 </ion-header> 
   
-<ion-content padding class="home-content">
+<ion-content padding class="dashboard-home">
 
     <div *ngIf="!isLoggedIn">
         <div padding ></div>
@@ -28,76 +28,76 @@
         </ion-list>
 
         <br />
-        <button (click)="login()">Login</button>
+        <button  ion-button (click)="login()">Login</button>
         <br />
         <p color="primary" text-center >Do not have an accout? &nbsp;&nbsp;
             <span color="danger" (click)="gotoSignUpPage()"><u>sign up</u></span></p>
 
     </div>
 
-  <ion-list *ngIf="isLoggedIn" >
+  <ion-list *ngIf="isLoggedIn" id="home">
 
     <ion-item (click)="listing()" >
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>Listings</h2>
         <p>Subscribe to any of our packages</p>
     </ion-item>
     <ion-item (click)="viewListing()" >
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>View Listings</h2>
         <p>View listings</p>
     </ion-item>
     <ion-item (click)="post_a_job()" >
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>Post a job</h2>
         <p>Post a job as a barber, a barbershop manicu hire a barber or  shop space</p>
     </ion-item>
     <ion-item (click)="view_posted_jobs()">
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>View Posted Jobs</h2>
         <p>View posted jobs</p>
     </ion-item>
     <ion-item (click)="view_applied_jobs()">
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>View Applied Jobs</h2>
         <p>View Applied jobs</p>
     </ion-item>
     <ion-item (click)="postRentSpace()">
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>Post/Rent a space</h2>
         <p>Post or rent a barbershop space</p>
     </ion-item>
     <ion-item (click)="servicesProducts()">
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>Services & Products</h2>
         <p>Display the products and services you offer</p>
     </ion-item>
     <ion-item (click)="paymentMethod()">
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>Payment Methods</h2>
         <p>Choose your prefered Payment Methods</p>
     </ion-item>
 
     <ion-item (click)="logout()">
-        <ion-thumbnail item-left>
+        <ion-avatar item-left>
             <img src="">
-        </ion-thumbnail>
+        </ion-avatar>
         <h2>Logout</h2>
         <p>logout</p>
     </ion-item>

@@ -1,7 +1,19 @@
 .contact-us{
-    ion-col img{
-        width: 70%;
-        height: 70%;
+
+    ion-card-header{
+        color: map-get($colors, primary);
+    }
+
+    ion-card img{
+        width: 40%;
+        height: 40%;
         margin: 0 auto;
+    }
+
+    ion-card-content{
+        i{
+            margin-right: 8px;
+            color: map-get($colors, secondary);
+        }
     }
 }

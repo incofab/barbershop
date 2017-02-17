@@ -10,23 +10,15 @@
 <ion-content padding class="view-applied-jobs" >
 
     <ion-list>
-        <ion-item *ngFor="let job of jobs; let i = index">
+        <ion-item *ngFor="let job of appliedJobs; let i = index">
 
-            <h2 text-center>{{ job.title }}</h2>
-            <p text-center>{{ job.applicant }}</p>
+            <h1 text-center >{{ job.job_id }}</h1>
+            <p id="comment">{{ job.jobber_comment }}</p>            
 
-            <p>{{ job.details }}</p>            
-
-            <ion-grid > 
-                <ion-row wrap > 
-                    <ion-col width-50 >
-                        <p><small><b>Experience: </b>{{ job.experience }}</small></p>
-                    </ion-col>
-                    <ion-col width-50 >
-                        <p><small><b>Date posted: </b>{{ job.date_posted }}</small></p>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+            <p><small><b>Applicant: </b></small>{{ applicantData.firstname + ' ' + applicantData.lastname }}</p>
+            
+            <p><small><b>Experience: </b>{{ job.jobber_exp }}</small></p>
+            <p><small><b>Posted on: </b>{{ job.date_created }}</small></p>
 
         </ion-item>
     </ion-list>   

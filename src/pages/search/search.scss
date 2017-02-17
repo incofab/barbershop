@@ -1,0 +1,20 @@
+.search{
+    ion-item{
+        margin-bottom: 5px;
+        padding-top: 5px;
+
+        h2{
+            color: map-get($colors, primary);
+            margin-bottom: 8px;
+        }
+    }
+
+    ion-item p small i, #search-results i{
+        margin-right: 8px;
+        color: map-get($colors, secondary);
+    }
+    #search-results label{
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+}

@@ -13,15 +13,15 @@
 
     <ion-list>
         <ion-item>
-            <div><ion-label >Listing</ion-label></div>
-            <ion-select [(ngModel)]="listingID">
+            <ion-label >Listing</ion-label>
+            <ion-select [(ngModel)]="listingID" >
                 <ion-option *ngFor="let l of listingIDArr" 
                     value="{{ l.listing_data_id }}" >{{ l.title }}</ion-option>
             </ion-select>
         </ion-item>
        
         <ion-item>
-            <div><ion-label>Services And Products</ion-label></div>
+            <ion-label>Services And Products</ion-label>
             <ion-select [(ngModel)]="servicesAndProducts">
                 <ion-option *ngFor="let sp of servicesAndProductsArr" 
                     value="{{ sp.name }}" >{{ sp.name }}</ion-option>
@@ -29,14 +29,14 @@
         </ion-item>
         
         <ion-item>
-            <div><ion-label >Price</ion-label></div>
-            <ion-input type="text" [(ngModel)]="price" placeholder="Amount" ></ion-input>
+            <ion-label >Price</ion-label>
+            <ion-input type="text" [(ngModel)]="price" ></ion-input>
         </ion-item>
         
     </ion-list>
 
     <div padding ></div>
 
-    <button (click)="sendData()">Send</button>
+    <button ion-button (click)="sendData()">Send</button>
 
 </ion-content>

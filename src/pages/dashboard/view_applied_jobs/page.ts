@@ -10,7 +10,8 @@ import { K } from '../../../app/k/k';
 })
 export class ViewAppliedJobsPage {
 
-    jobs:any;
+    appliedJobs:any;
+    applicantData:any[];
     constructor(public navCtrl: NavController,
         private alertCtrl: AlertController, private dService:DashboardService,
         private loadingCtrl: LoadingController) {
@@ -32,7 +33,9 @@ export class ViewAppliedJobsPage {
         this.dService.viewAppliedJobs()
             .subscribe(response => { // On success
             if(response.success){
-                this.jobs = response.result;
+                this.appliedJobs = response.result[0];
+                this.applicantData = response.result[1];
+                this.appliedJobs = this.dummy();
             }else {
                 K.alert(this.alertCtrl, 'Failed', response.message);
             }
@@ -43,7 +46,20 @@ export class ViewAppliedJobsPage {
             loading.dismiss();
         });
 
-  }
+    }
+
+    private dummy(){
+        let arr = [];
+        for(let i = 0; i < 5; i++){
+            arr[i] = {
+                job_id: 'Lorem ipsum dolor sit amet, consectetur',
+                jobber_comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, explicabo.',
+                jobber_exp: 'Lorem ipsum dolor sit amet',
+                date_created: '2009/12/03',
+            }
+        }
+        return arr;
+    }
 
 
 }

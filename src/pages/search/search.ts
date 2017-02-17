@@ -50,8 +50,7 @@ export class SearchBarberShopPage {
             }else{
                 K.alert(this.alertCtrl, 'Failed', 'Data retrieval failed');
             }
-            loading.dismiss();
-            // this.shops = this.dummyShops();            
+            loading.dismiss();          
         },
         (err: any) => { // on error
             loading.dismiss();
@@ -59,19 +58,6 @@ export class SearchBarberShopPage {
         });
 
     }
-
-    dummyShops(){
-        let arr = [];
-        for(let i = 0; i<10; i++){
-            arr[i] = {
-                shop_name : 'Lorem ipsum dolor sit amet',
-                location: 'consectetur adipisicing elit. Tenetur, veritatis.',
-                phone: '459495457384'
-            }
-        }
-        return arr;
-    }
-
 
 
 }

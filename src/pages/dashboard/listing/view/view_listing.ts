@@ -33,6 +33,7 @@ export class ViewListingsPage {
             .subscribe(response => { // On success
             if(response.success){
                 this.allPostedJobs = response.result;
+                this.allPostedJobs = this.dummy();
             }else{
                 K.alert(this.alertCtrl, 'Failed', 'Data retrieval Failed');
             }
@@ -43,6 +44,22 @@ export class ViewListingsPage {
             loading.dismiss();
         });
 
+  }
+
+  private dummy(){
+      let arr = [];
+      for(let i = 0; i < 5; i++){
+          arr[i] = {
+              title: 'Lorem ipsum dolor sit amet, consectetur',
+              short_description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, veritatis.',
+              phone: '090434545838',
+              address: 'consectetur adipisicing elit. Asperiores, veritatis.',
+              website: 'www.website.com',
+              email: 'myemail@website.com',
+              status: i
+          }
+      }
+      return arr;
   }
 
 

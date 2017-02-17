@@ -1,0 +1,47 @@
+.view-posted-jobs{
+
+    #company_name{
+        text-align: center;
+        color: map-get($colors, secondary);
+        margin-bottom: 14px;
+    }
+    h2{
+        color: map-get($colors, primary);
+        padding-top: 5px;
+    }
+    p{
+        margin-bottom: 4px;
+    }
+    ion-grid, ion-row{
+        margin: 0;
+        padding: 0;
+    }
+    ion-grid ion-row ion-col{
+        padding: 0px;
+        margin: 0px;
+        text-align: left;
+
+        p{
+            margin: 0px;
+        }
+    }
+
+    #approved, #pending, #suspended{
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        margin-right: 3px;
+        display: inline-block;
+        float: right;
+    }
+    #approved{
+        background-color: map-get($colors, primary);
+    }
+    #pending{
+        background-color: map-get($colors, secondary) * 2;
+    }
+    #suspended{
+        background-color: map-get($colors, danger);
+    }
+
+}

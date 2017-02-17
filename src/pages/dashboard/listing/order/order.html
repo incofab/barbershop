@@ -18,7 +18,7 @@
             <ion-input type="text" [(ngModel)]="logo" ></ion-input>
         </ion-item>
 
-        <div *ngFor="let d of weekDays; let i = index">
+        <div *ngFor="let d of weekDays; let i = index" id="week-days">
             <h6>{{ d.day }}</h6>
             <p>
                 <b>Start Hour</b>&nbsp;&nbsp;&nbsp;
@@ -100,15 +100,12 @@
             <ion-input type="text" [(ngModel)]="radius" ></ion-input>
         </ion-item>
         <ion-item>
-            <span>
-                <ion-label floating>Latitude</ion-label>
-                <ion-input type="text" [(ngModel)]="latitude" ></ion-input>
-            </span>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span>
-                <ion-label floating>Longitude</ion-label>
-                <ion-input type="text" [(ngModel)]="longitude" ></ion-input>
-            </span>
+            <ion-label floating>Latitude</ion-label>
+            <ion-input type="text" [(ngModel)]="latitude" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Longitude</ion-label>
+            <ion-input type="text" [(ngModel)]="longitude" ></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Classified</ion-label>

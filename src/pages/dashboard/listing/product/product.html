@@ -9,17 +9,14 @@
   
 <ion-content padding class="product" >
     
-    <div text-center >
-        <h2><b>Term:</b> <span>{{ billing_period }}</span></h2>
-        <h2><b>Price:</b> <span>${{ price }}</span></h2>
-    </div>
+    <h1>${{ price }}/{{ billing_period}}</h1>
 
     <ion-list *ngFor="let product of products; let i = index">
         <ion-item >
-            <span><b>Category Limit</b></span> <span>{{ product.pcategory_limit }}</span>
+            <span><b>Category Limit</b></span> <span class="badge">{{ product.pcategory_limit }}</span>
         </ion-item>
         <ion-item >
-            <span><b>Featured</b></span> <span></span>
+            <span><b>Featured</b></span> <span class="badge"></span>
         </ion-item>
         <ion-item >
             <span><b>Phone</b></span> <span><i class="fa fa-check" *ngIf="product.pphone"></i><i class="fa fa-times text-danger" *ngIf="!product.pphone"></i></span>

@@ -9,24 +9,22 @@
   
 <ion-content padding class="post-a-job" >
 
-    <ion-grid>
+    <ion-grid id="selection-buttons">
         <ion-row>
             <ion-col width-33 >
-                <button [ngClass]="{active: POST_AS_A_BARBER == activeCategory}" 
+                <button [ngClass]="{active: POST_AS_A_BARBER == activeCategory}"  ion-button
                     (click)="postJobAs(POST_AS_A_BARBER)"><small>Post job as a barber</small></button>                
             </ion-col>
             <ion-col width-33>
-                <button [ngClass]="{active: HIRE_A_BARBER == activeCategory}" 
+                <button [ngClass]="{active: HIRE_A_BARBER == activeCategory}"  ion-button
                     (click)="postJobAs(HIRE_A_BARBER)"><small>Hire a barber</small></button>                
             </ion-col>
             <ion-col width-33>
-                <button [ngClass]="{active: HIRE_A_MANICURIST == activeCategory}" 
+                <button [ngClass]="{active: HIRE_A_MANICURIST == activeCategory}"  ion-button
                     (click)="postJobAs(HIRE_A_MANICURIST)"><small>Post job as Manicurist</small></button>                
             </ion-col>
         </ion-row>
     </ion-grid>
-
-    <div padding ></div>
 
     <ion-list>
         <ion-item>
@@ -75,7 +73,7 @@
             </ion-select>
         </ion-item>
         <ion-item>
-            <ion-label floating>Deadline</ion-label>
+            <ion-label stacked>Deadline</ion-label>
             <ion-input type="text" [(ngModel)]="deadLine" placeholder="YYYY-MM-DD" ></ion-input>
         </ion-item>
         <ion-item>

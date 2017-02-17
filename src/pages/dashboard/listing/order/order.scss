@@ -1,0 +1,23 @@
+.order{
+
+    #week-days{
+        margin-top: 20px;
+
+        ion-input{
+            display: inline-block;
+            width: auto;
+            :focus{
+                border-bottom: 2px solid map-get($colors, primary);
+            }
+        }
+        b{
+            color: #777;
+        }
+        h6{
+            color: map-get($colors, primary);
+        }
+        p{
+            margin: 5px 0;
+        }
+    }
+}

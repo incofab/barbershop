@@ -7,27 +7,28 @@
   </ion-navbar>
 </ion-header>
   
-<ion-content padding class="Search" >
+<ion-content padding class="search" >
 
     <div *ngIf="!showSearchResults" >
 
-
-        <ion-list>
+        <div padding ></div>
+        <ion-list no-lines >
             <ion-item>
                 <ion-label floating>Barbershop name</ion-label>
                 <ion-input type="text" [(ngModel)]="shopName" ></ion-input>
             </ion-item>
-        </ion-list>
 
-        <div style="position: relative" >
-            <ion-label >Select Country</ion-label>
-            <ion-select [(ngModel)]="selectedCountry" >
-                <ion-option *ngFor="let country of countries, let i = index" 
-                    value="{{ country }}">{{ country }}</ion-option>
-            </ion-select>
-        </div>
+        <!--<div style="position: relative" >-->
+            <ion-item>
+                <ion-label class="inline" >Select Country</ion-label>
+                <ion-select [(ngModel)]="selectedCountry" >
+                    <ion-option value="">Select Country</ion-option>
+                    <ion-option *ngFor="let country of countries, let i = index" 
+                        value="{{ country }}">{{ country }}</ion-option>
+                </ion-select>
+            </ion-item>
+        <!--</div>-->
 
-        <ion-list>
             <ion-item >
                 <ion-checkbox id="near_me" [(ngModel)]="nearMe" ></ion-checkbox>
                 <ion-label for="near_me">near me</ion-label>
@@ -41,14 +42,14 @@
     </div>
 
 
-    <ion-list *ngIf="showSearchResults" >
+    <ion-list *ngIf="showSearchResults" id="search-results" >
         <ion-item *ngFor="let shop of shops, let i = index" >
             <ion-thumbnail item-left>
-                <img src="" alt="">
+                <img src="" alt="" >
             </ion-thumbnail>
             <h2>{{ shop.title }}</h2>
-            <p>{{ shop.address }}</p>
-            <p>phone: {{ shop.contact_phone }}</p>
+            <p><small><i class="fa fa-map-marker"></i> {{ shop.address }}</small></p>
+            <p><small><i class="fa fa-phone"></i> {{ shop.contact_phone }}</small></p>
         </ion-item>
     </ion-list>
 

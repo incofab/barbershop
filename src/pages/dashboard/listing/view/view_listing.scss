@@ -1,0 +1,26 @@
+.view_listing{
+    
+    ion-card-header{
+        color: map-get($colors, primary);
+        margin-top: 0px;
+        margin-bottom: 5px;
+        padding: 0px 3px;
+    }
+    ion-card-content{
+        p{
+            margin: 8px 0px;
+        }
+        small{
+            word-wrap: break-word;
+            white-space: normal;
+            text-align: center;
+        }
+        p i{
+            color: map-get($colors, secondary);
+        }
+        b, i{
+            margin-right: 6px;
+        }
+    }
+
+}

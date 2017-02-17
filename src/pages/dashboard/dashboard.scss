@@ -1,0 +1,23 @@
+.dashboard-home{
+    #home{
+        ion-item h2{
+            color: map-get($colors, primary);
+        }
+        ion-thumbnail{
+            min-width: 50px;
+            min-height: 50px;
+        }
+
+        ion-item:active{
+            background-color: map-get($colors, clicked);
+        }
+        ion-avatar{
+            background-color: map-get($colors, clicked);
+            border-radius: 50%;
+
+            img{
+                border: 2px solid map-get($colors, secondary);
+            }
+        }
+    }
+}

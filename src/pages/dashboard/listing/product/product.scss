@@ -1,0 +1,36 @@
+.product{
+
+    h1{
+        padding: 20px 0px;
+        background-color: map-get($colors, secondary);
+        color: white;
+        text-align: center;
+    }
+
+    i, .value, .badge{
+        float: right;
+        margin-right: 10px;
+    }
+
+    i.fa-times{
+        color: map-get($colors, danger);
+    }
+    i.fa-check{
+        color: map-get($colors, secondary);
+    }
+    .badge{
+        background-color: map-get($colors, primary);
+        border-radius: 10px;
+        color: #fff;
+        min-width: 10px;
+        padding: 3px 7px;
+        text-align: center;
+        vertical-align: baseline;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+    ion-list ion-item b{
+        color: #777;
+    }
+
+}

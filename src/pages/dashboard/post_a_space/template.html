@@ -10,20 +10,18 @@
   
 <ion-content padding class="post-rent-space" >
 
-    <ion-grid>
+    <ion-grid id="selection-buttons" >
         <ion-row>
             <ion-col width-50 >
-                <button [ngClass]="{active: POST_A_BARBERSHOP_SPACE == activePost}" 
+                <button [ngClass]="{active: POST_A_BARBERSHOP_SPACE == activePost}"  ion-button
                     (click)="chooseAction(POST_A_BARBERSHOP_SPACE)"><small>Post Barbershop space</small></button>                
             </ion-col>
             <ion-col width-50>
-                <button [ngClass]="{active: RENT_A_BARBERSHOP_SPACE == activePost}" 
+                <button [ngClass]="{active: RENT_A_BARBERSHOP_SPACE == activePost}"  ion-button
                     (click)="chooseAction(RENT_A_BARBERSHOP_SPACE)"><small>Rent Barbershop space</small></button>                
             </ion-col>
         </ion-row>
     </ion-grid>
-
-    <div padding ></div>
 
     <ion-list>
         <ion-item>

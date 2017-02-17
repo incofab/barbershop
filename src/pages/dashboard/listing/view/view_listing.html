@@ -9,28 +9,30 @@
   
 <ion-content padding class="view_listing" >
     
-    <ion-list >
+    <ion-list no-lines >
         
         <ion-item *ngFor="let l of allPostedJobs; let i = index" >
             <ion-card>
                 <ion-card-header>
-                    <h2>{{ l.title }}</h2>
+                    {{ l.title }}
                 </ion-card-header>
                 <ion-card-content>
-                    <p>{{ l.short_description }}</p>
-                    <p><span><b>Email: </b></span> <span>{{ l.email }}</span></p>
+                    <div><small>{{ l.short_description }}</small></div>
+                    <p><span><i class="fa fa-phone"></i></span> <span>{{ l.phone }}</span></p>
+                    <p><span><i class="fa fa-envelope-o"></i></span> <span>{{ l.email }}</span></p>
                     <p><span><b>Website: </b></span> <span>{{ l.website }}</span></p>
-                    <p><span><b>Phone: </b></span> <span>{{ l.phone }}</span></p>
 
                     <div [ngSwitch]="l.status" >
-                        <p *ngSwitchCase="1"><span><b>Status: </b></span> <span>{{ (l.status == 1) ? 'Approved' : '' }}</span></p>
-                        <p *ngSwitchCase="0"><span><b>Status: </b></span> <span>{{ (l.status == 1) ? 'Pending' : '' }}</span></p>
-                        <p *ngSwitchDefault ><span><b>Status: </b></span> <span>{{ (l.status == 1) ? 'Suspended' : '' }}</span></p>
+                        <p *ngSwitchCase="1"><span><b>Status: </b></span> <span>{{ 'Approved' }}</span></p>
+                        <p *ngSwitchCase="0"><span><b>Status: </b></span> <span>{{ 'Pending' }}</span></p>
+                        <p *ngSwitchDefault ><span><b>Status: </b></span> <span>{{ 'Suspended' }}</span></p>
                     </div>
+
                 </ion-card-content>
+
             </ion-card>
-        </ion-item>
-        
+
+        </ion-item>        
 
     </ion-list>
 

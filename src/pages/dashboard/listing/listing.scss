@@ -1,0 +1,24 @@
+.listing{
+    ion-card{
+        cursor: pointer;
+        :active{
+            background-color: map-get($colors, clicked);
+        }
+
+        ion-card-content{
+            h2{
+                background-color: map-get($colors, secondary);
+                color: white;
+                padding: 10px 0;
+                text-align: center;
+            }
+            h1{
+                background-color: map-get($colors, primary);
+                color: white;
+                padding: 20px 0px;
+                text-align: center;
+                margin-top: 2px;
+            }
+        }
+    }
+}
